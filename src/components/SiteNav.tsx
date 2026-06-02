@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Mail, Clock, Search, BookOpen, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Mail, Clock, Search, BookOpen, Facebook, Instagram, Linkedin, ShoppingBag } from "lucide-react";
 
-const links = ["Home", "Programs", "Tracks", "Stories", "Sponsor"];
+const links = ["Home", "Courses", "Blog", "Tracks", "LearnPress Add-On"];
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,113 +14,114 @@ export function SiteNav() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top utility bar */}
+      {/* Dark band wraps everything; white bar floats inside with rounded edges */}
       <div
-        className="text-white text-xs"
-        style={{ background: "var(--navy)" }}
+        className="relative"
+        style={{ background: "var(--emerald)" }}
       >
-        <div className="mx-auto max-w-7xl px-6 h-9 flex items-center justify-end gap-6">
-          <span className="hidden sm:flex items-center gap-2 opacity-90">
-            <Mail className="h-3.5 w-3.5" /> hello@heritage-edu.org
+        {/* Top utility bar */}
+        <div className="mx-auto max-w-7xl px-6 h-10 flex items-center justify-end gap-6 text-white text-xs">
+          <span className="hidden sm:flex items-center gap-2 opacity-95">
+            <Mail className="h-3.5 w-3.5" />
+            <span>hello@heritage-edu.org</span>
           </span>
-          <span className="hidden md:flex items-center gap-2 opacity-90">
-            <Clock className="h-3.5 w-3.5" /> Mon – Sat · 8:00 AM – 7:00 PM
+          <span className="hidden md:flex items-center gap-2 opacity-95">
+            <Clock className="h-3.5 w-3.5" />
+            <span>Mon – Sat · 8:00 AM – 7:00 PM</span>
           </span>
-          <div className="flex items-center gap-3 opacity-90">
+          <div className="flex items-center gap-3 opacity-95">
             <Facebook className="h-3.5 w-3.5" />
             <Instagram className="h-3.5 w-3.5" />
             <Linkedin className="h-3.5 w-3.5" />
           </div>
         </div>
-      </div>
 
-      {/* Main nav */}
-      <div
-        className={`transition-all duration-300 ${
-          scrolled ? "shadow-lg" : ""
-        }`}
-        style={{ background: "var(--canvas)" }}
-      >
-        <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
-            <div
-              className="h-11 w-11 rounded-md flex items-center justify-center"
-              style={{ background: "var(--emerald)" }}
-            >
-              <BookOpen className="h-6 w-6 text-white" />
-            </div>
-            <div className="leading-tight">
+        {/* White rounded nav bar */}
+        <div className="px-4 pb-3">
+          <div
+            className={`mx-auto max-w-7xl rounded-2xl flex items-center justify-between pl-6 pr-3 h-[72px] transition-shadow ${
+              scrolled ? "shadow-xl" : "shadow-md"
+            }`}
+            style={{ background: "var(--canvas)" }}
+          >
+            {/* Logo */}
+            <a href="#" className="flex items-center gap-3">
               <div
-                className="font-display text-2xl font-bold"
-                style={{ color: "var(--emerald)" }}
+                className="h-10 w-10 rounded-md flex items-center justify-center"
+                style={{ background: "var(--navy)" }}
               >
-                Heritage
+                <BookOpen className="h-5 w-5 text-white" />
               </div>
-              <div
-                className="text-[10px] tracking-[0.2em] uppercase"
-                style={{ color: "var(--charcoal)", opacity: 0.7 }}
+              <div className="leading-tight">
+                <div
+                  className="font-display text-2xl font-bold"
+                  style={{ color: "var(--emerald)" }}
+                >
+                  Heritage
+                </div>
+                <div
+                  className="text-[10px] tracking-[0.18em] uppercase"
+                  style={{ color: "var(--charcoal)", opacity: 0.65 }}
+                >
+                  Academy of Learning
+                </div>
+              </div>
+            </a>
+
+            {/* Links */}
+            <nav className="hidden lg:flex items-center gap-1">
+              {links.map((l, i) => (
+                <a
+                  key={l}
+                  href="#"
+                  className="px-5 py-2.5 rounded-full text-[15px] font-medium transition-colors"
+                  style={
+                    i === 0
+                      ? { background: "var(--crimson)", color: "white" }
+                      : { color: "var(--charcoal)" }
+                  }
+                >
+                  {l}
+                </a>
+              ))}
+            </nav>
+
+            {/* Right cluster */}
+            <div className="flex items-center gap-3">
+              <button
+                aria-label="Search"
+                className="h-9 w-9 rounded-full flex items-center justify-center hover:bg-black/5"
+                style={{ color: "var(--charcoal)" }}
               >
-                Academy of Learning
-              </div>
+                <Search className="h-4 w-4" />
+              </button>
+              <button
+                aria-label="Cart"
+                className="h-9 w-9 rounded-full flex items-center justify-center hover:bg-black/5"
+                style={{ color: "var(--charcoal)" }}
+              >
+                <ShoppingBag className="h-4 w-4" />
+              </button>
+              <button
+                className="hidden sm:inline-flex items-center px-6 h-11 rounded-full font-semibold text-sm tracking-wide transition-transform hover:scale-[1.03]"
+                style={{
+                  background: "var(--gold)",
+                  color: "var(--charcoal)",
+                  boxShadow: "0 8px 20px -8px rgba(253,184,19,0.6)",
+                }}
+              >
+                Secure Early-Bird
+              </button>
             </div>
-          </a>
-
-          {/* Links */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {links.map((l, i) => (
-              <a
-                key={l}
-                href="#"
-                className="px-5 py-2.5 rounded-full text-[15px] font-medium transition-all"
-                style={
-                  i === 0
-                    ? {
-                        background: "var(--crimson)",
-                        color: "white",
-                      }
-                    : { color: "var(--charcoal)" }
-                }
-                onMouseEnter={(e) => {
-                  if (i !== 0) e.currentTarget.style.color = "var(--crimson)";
-                }}
-                onMouseLeave={(e) => {
-                  if (i !== 0) e.currentTarget.style.color = "var(--charcoal)";
-                }}
-              >
-                {l}
-              </a>
-            ))}
-          </nav>
-
-          {/* Right cluster */}
-          <div className="flex items-center gap-4">
-            <button
-              aria-label="Search"
-              className="h-10 w-10 rounded-full flex items-center justify-center border transition-colors"
-              style={{ borderColor: "var(--border)", color: "var(--charcoal)" }}
-            >
-              <Search className="h-4 w-4" />
-            </button>
-            <button
-              className="hidden sm:inline-flex items-center px-6 h-11 rounded-full font-semibold text-sm tracking-wide transition-transform hover:scale-[1.03]"
-              style={{
-                background: "var(--gold)",
-                color: "var(--charcoal)",
-                boxShadow: "0 8px 20px -8px rgba(253,184,19,0.6)",
-              }}
-            >
-              Secure Early-Bird Access
-            </button>
           </div>
         </div>
 
-        {/* Policy strip */}
-        <div
-          className="text-xs"
-          style={{ background: "var(--emerald)", color: "white" }}
-        >
-          <div className="mx-auto max-w-7xl px-6 py-2 flex items-center gap-3">
+        {/* Policy strip: rounded right edge */}
+        <div className="px-4 pb-2">
+          <div
+            className="max-w-3xl rounded-br-3xl text-xs text-white py-2 pl-6 pr-10 flex items-center gap-3"
+            style={{ background: "var(--navy)" }}
+          >
             <span
               className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider"
               style={{ background: "var(--gold)", color: "var(--charcoal)" }}
@@ -128,8 +129,7 @@ export function SiteNav() {
               POLICY UPDATE
             </span>
             <span className="opacity-95 truncate">
-              Senior leaders from the world's leading research institutes
-              join our 2026 advisory board…
+              Senior leaders from the world's leading research institutes join our 2026 advisory board…
             </span>
           </div>
         </div>
