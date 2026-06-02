@@ -27,7 +27,7 @@ function Index() {
     <div className="min-h-screen">
       <SiteNav />
       {/* spacer for fixed nav (utility 36 + main 80 + policy ~32) */}
-      <div style={{ height: 148 }} />
+      <div style={{ height: 168 }} />
       <HeroSlider />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
