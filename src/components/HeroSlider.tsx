@@ -1,39 +1,61 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import heroImg from "@/assets/hero-education.jpg";
+import img1 from "@/assets/prophecy-1.png.asset.json";
+import img2 from "@/assets/prophecy-2.png.asset.json";
+import img3 from "@/assets/prophecy-3.png.asset.json";
+import img4 from "@/assets/prophecy-4.png.asset.json";
 
 const slides = [
   {
-    pre: "Don't",
-    accent1: "Let",
-    mid: "This Heritage",
-    line2pre: "Fade.",
-    accent2: "Learn",
-    line2post: "With Us.",
-    body: "Help us bring world-class classrooms to every child. Generations of curious minds are waiting for the spark only education can ignite.",
-    cta: "Sponsor a Classroom",
+    pre: "The",
+    accent1: "Last",
+    mid: "Generation.",
+    line2pre: "Born to See the",
+    accent2: "King",
+    line2post: "Return.",
+    body: "This generation was born to do what every other only prayed for — to see the King return, to reign with Him, and to enforce His victory on the earth.",
+    cta: "Stand With Us",
+    image: img1.url,
+    alt: "Multitudes worshipping as the King returns in glory",
   },
   {
-    pre: "Empower",
-    accent1: "Every",
-    mid: "Child's Voice.",
-    line2pre: "Ignite",
-    accent2: "Lifelong",
-    line2post: "Wonder.",
-    body: "Our scholarship tracks pair mentors with motivated learners across 40+ communities — building futures one lesson at a time.",
+    pre: "The Mark Is Coming.",
+    accent1: "The King",
+    mid: "Is Coming.",
+    line2pre: "Only One Requires Your",
+    accent2: "Preparation",
+    line2post: ".",
+    body: "Yarah Life does not raise a generation in fear of the mark — it raises a generation so shaped in Christ that the choice is never in doubt.",
+    cta: "Prepare a Child",
+    image: img2.url,
+    alt: "The choice between the mark of the beast and the crown of Christ",
+  },
+  {
+    pre: "A",
+    accent1: "Prepared",
+    mid: "Generation.",
+    line2pre: "Sons & Daughters of",
+    accent2: "Light",
+    line2post: ".",
+    body: "The Kingdom of Heaven is not coming to a passive generation — it is coming through a prepared one. They do not wait for the world to change. They are the change.",
+    cta: "Join the Movement",
+    image: img3.url,
+    alt: "A radiant generation walking forward into the light",
+  },
+  {
+    pre: "Prophets",
+    accent1: "Saw It.",
+    mid: "Apostles Longed For It.",
+    line2pre: "Your Children Will",
+    accent2: "Stand",
+    line2post: "In It.",
+    body: "Every prophet saw this moment — only this generation gets to live it. The question is whether they will stand firm.",
     cta: "Secure Early-Bird Access",
-  },
-  {
-    pre: "Heritage",
-    accent1: "Roots,",
-    mid: "Modern Tools.",
-    line2pre: "Built",
-    accent2: "For",
-    line2post: "Tomorrow.",
-    body: "Blending classical pedagogy with adaptive technology to nurture artisans, scientists, and storytellers of the next century.",
-    cta: "Join Our Community",
+    image: img4.url,
+    alt: "Prophets beholding the scrolls of Isaiah, Daniel and Revelation",
   },
 ];
+
 
 export function HeroSlider() {
   const [i, setI] = useState(0);
