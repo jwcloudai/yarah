@@ -30,6 +30,7 @@ function Index() {
       {/* spacer for fixed nav (utility 36 + main 80 + policy ~32) */}
       <div style={{ height: 168 }} />
       <HeroSlider />
+      <VisionMission />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
         <h2
