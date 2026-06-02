@@ -68,7 +68,7 @@ export function HeroSlider() {
       {/* Image with diagonal mask */}
       <div className="absolute inset-0">
         <img
-          src={heroImg}
+          src={s.image}
           alt="Students reading together in a classroom"
           width={1600}
           height={900}
