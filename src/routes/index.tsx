@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav } from "@/components/SiteNav";
 import { HeroSlider } from "@/components/HeroSlider";
-import { ProphecySections } from "@/components/ProphecySections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
