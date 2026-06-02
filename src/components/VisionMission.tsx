@@ -208,12 +208,12 @@ export function VisionMission() {
             style={{ color: "var(--canvas)" }}
           >
             Deploying a{" "}
-            <span style={{ color: "var(--gold)" }}>Stage-by-Stage</span> Kingdom
+            <span style={{ color: "var(--crimson)" }}>Stage-by-Stage</span> Kingdom
             Academy —
             <br />
             Transforming{" "}
             <span style={{ color: "var(--gold)" }}>Passive Observers</span> into{" "}
-            <span style={{ color: "var(--gold)" }}>Active Christ-Bearers</span>
+            <span style={{ color: "var(--crimson)" }}>Active Christ-Bearers</span>
           </h2>
 
           <Divider />
