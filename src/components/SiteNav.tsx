@@ -21,9 +21,9 @@ export function SiteNav() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="relative" style={{ background: "var(--crimson)" }}>
+      <div className="relative" style={{ background: "var(--canvas)", borderBottom: "1px solid color-mix(in oklab, var(--navy) 10%, transparent)" }}>
         {/* Top utility bar */}
-        <div className="mx-auto max-w-7xl px-6 h-10 flex items-center justify-end gap-6 text-white text-xs">
+        <div className="mx-auto max-w-7xl px-6 h-10 flex items-center justify-end gap-6 text-xs" style={{ color: "var(--navy)" }}>
           <span className="hidden sm:flex items-center gap-2 opacity-95">
             <Mail className="h-3.5 w-3.5" />
             <span>info@yarahlife.com</span>
