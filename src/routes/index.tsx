@@ -3,6 +3,7 @@ import { SiteNav } from "@/components/SiteNav";
 import { HeroSlider } from "@/components/HeroSlider";
 import { VisionMission } from "@/components/VisionMission";
 import { KingdomJourney } from "@/components/KingdomJourney";
+import { WhyNow } from "@/components/WhyNow";
 
 export const Route = createFileRoute("/")({
   head: () => ({
