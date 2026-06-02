@@ -167,29 +167,29 @@ export function VisionMission() {
                 key={p.title}
                 className="rounded-2xl p-7 text-center transition-transform hover:-translate-y-1"
                 style={{
-                  background: "white",
-                  boxShadow:
-                    "0 10px 30px -15px rgba(26,59,139,0.18), 0 2px 6px -3px rgba(0,0,0,0.04)",
+                  background: "color-mix(in oklab, var(--canvas) 6%, transparent)",
+                  border: "1px solid color-mix(in oklab, var(--gold) 25%, transparent)",
+                  backdropFilter: "blur(6px)",
                 }}
               >
                 <div
                   className="mx-auto h-12 w-12 rounded-full flex items-center justify-center mb-4"
                   style={{
-                    background: `color-mix(in oklab, ${p.color} 12%, transparent)`,
-                    color: p.color,
+                    background: "color-mix(in oklab, var(--gold) 18%, transparent)",
+                    color: "var(--gold)",
                   }}
                 >
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3
                   className="font-display text-lg font-bold mb-2"
-                  style={{ color: p.color }}
+                  style={{ color: "var(--gold)" }}
                 >
                   {p.title}
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "color-mix(in oklab, var(--canvas) 88%, transparent)", opacity: 0.85 }}
+                  style={{ color: "color-mix(in oklab, var(--canvas) 80%, transparent)" }}
                 >
                   {p.body}
                 </p>
