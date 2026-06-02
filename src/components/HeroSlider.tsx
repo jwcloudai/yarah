@@ -69,7 +69,7 @@ export function HeroSlider() {
       <div className="absolute inset-0">
         <img
           src={s.image}
-          alt="Students reading together in a classroom"
+          alt={s.alt}
           width={1600}
           height={900}
           className="absolute inset-0 w-full h-full object-cover"
