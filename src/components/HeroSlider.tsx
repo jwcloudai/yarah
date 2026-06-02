@@ -78,7 +78,7 @@ export function HeroSlider() {
         <div
           className="absolute top-0 right-0 h-full w-[28%]"
           style={{
-            background: "white",
+            background: "var(--canvas)",
             clipPath: "polygon(35% 0, 100% 0, 100% 100%, 0 100%)",
             opacity: 0.92,
           }}
