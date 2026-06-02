@@ -5,25 +5,25 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     <div className="flex items-center justify-center gap-4 mb-8">
       <span
         className="h-px w-16 md:w-24"
-        style={{ background: "color-mix(in oklab, var(--navy) 30%, transparent)" }}
+        style={{ background: "color-mix(in oklab, var(--gold) 50%, transparent)" }}
       />
       <span
         className="h-1.5 w-1.5 rounded-full"
-        style={{ background: "var(--crimson)" }}
+        style={{ background: "var(--gold)" }}
       />
       <span
         className="text-xs md:text-sm tracking-[0.4em] uppercase font-semibold"
-        style={{ color: "var(--navy)" }}
+        style={{ color: "var(--gold)" }}
       >
         {children}
       </span>
       <span
         className="h-1.5 w-1.5 rounded-full"
-        style={{ background: "var(--crimson)" }}
+        style={{ background: "var(--gold)" }}
       />
       <span
         className="h-px w-16 md:w-24"
-        style={{ background: "color-mix(in oklab, var(--navy) 30%, transparent)" }}
+        style={{ background: "color-mix(in oklab, var(--gold) 50%, transparent)" }}
       />
     </div>
   );
@@ -45,7 +45,7 @@ function Quote({ side }: { side: "left" | "right" }) {
       className={`font-display text-7xl md:text-8xl leading-none select-none ${
         side === "left" ? "" : "rotate-180 inline-block"
       }`}
-      style={{ color: "color-mix(in oklab, var(--crimson) 35%, transparent)" }}
+      style={{ color: "color-mix(in oklab, var(--gold) 55%, transparent)" }}
       aria-hidden
     >
       “
@@ -58,19 +58,19 @@ const pillars = [
     icon: Globe2,
     title: "Global Reach",
     body: "Communities of light rising from every nation, every background, every season of faith.",
-    color: "var(--emerald)",
+    color: "var(--gold)",
   },
   {
     icon: Swords,
     title: "Unshakeable Authority",
     body: "Operating with the mind of Christ — conquering deception and enforcing God's Kingdom on earth.",
-    color: "var(--navy)",
+    color: "var(--gold)",
   },
   {
     icon: Crown,
     title: "Destined to Reign",
     body: "Fully qualified to present the Lord's inheritance to Him and reign with Christ for one thousand years.",
-    color: "var(--crimson)",
+    color: "var(--gold)",
   },
 ];
 
@@ -78,8 +78,9 @@ export function VisionMission() {
   return (
     <section
       className="relative py-28 md:py-36"
-      style={{ background: "var(--canvas)" }}
+      style={{ background: "var(--navy)", color: "var(--canvas)" }}
     >
+
       <div className="mx-auto max-w-5xl px-6">
         {/* ============ VISION ============ */}
         <SectionLabel>Vision Statement</SectionLabel>
