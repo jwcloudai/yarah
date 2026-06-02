@@ -21,7 +21,7 @@ export function SiteNav() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="relative" style={{ background: "var(--emerald)" }}>
+      <div className="relative" style={{ background: "var(--crimson)" }}>
         {/* Top utility bar */}
         <div className="mx-auto max-w-7xl px-6 h-10 flex items-center justify-end gap-6 text-white text-xs">
           <span className="hidden sm:flex items-center gap-2 opacity-95">

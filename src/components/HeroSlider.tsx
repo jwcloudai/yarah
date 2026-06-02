@@ -74,11 +74,11 @@ export function HeroSlider() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ clipPath: "polygon(45% 0, 100% 0, 100% 100%, 30% 100%)" }}
         />
-        {/* Emerald diagonal accent */}
+        {/* Crimson diagonal accent */}
         <div
           className="absolute top-0 right-0 h-full w-[28%]"
           style={{
-            background: "var(--emerald)",
+            background: "var(--crimson)",
             clipPath: "polygon(35% 0, 100% 0, 100% 100%, 0 100%)",
             opacity: 0.92,
           }}
@@ -102,9 +102,9 @@ export function HeroSlider() {
             — Heritage Academy · Class of 2026
           </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
-            {s.pre} <span style={{ color: "var(--emerald)" }}>{s.accent1}</span> {s.mid}
+            {s.pre} <span style={{ color: "var(--crimson)" }}>{s.accent1}</span> {s.mid}
             <br />
-            {s.line2pre} <span style={{ color: "var(--crimson)" }}>{s.accent2}</span> {s.line2post}
+            {s.line2pre} <span style={{ color: "var(--gold)" }}>{s.accent2}</span> {s.line2post}
           </h1>
           <p className="mt-8 text-base md:text-lg leading-relaxed max-w-xl opacity-90">{s.body}</p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -138,7 +138,7 @@ export function HeroSlider() {
                   className="h-2.5 rounded-full transition-all"
                   style={{
                     width: idx === i ? 28 : 10,
-                    background: idx === i ? "var(--emerald)" : "rgba(255,255,255,0.4)",
+                    background: idx === i ? "var(--crimson)" : "rgba(255,255,255,0.4)",
                   }}
                 />
               ))}
