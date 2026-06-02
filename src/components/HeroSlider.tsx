@@ -74,11 +74,11 @@ export function HeroSlider() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ clipPath: "polygon(45% 0, 100% 0, 100% 100%, 30% 100%)" }}
         />
-        {/* Crimson diagonal accent */}
+        {/* White diagonal accent */}
         <div
           className="absolute top-0 right-0 h-full w-[28%]"
           style={{
-            background: "var(--crimson)",
+            background: "white",
             clipPath: "polygon(35% 0, 100% 0, 100% 100%, 0 100%)",
             opacity: 0.92,
           }}
