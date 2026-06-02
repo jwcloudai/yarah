@@ -1,29 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteNav } from "@/components/SiteNav";
+import { HeroSlider } from "@/components/HeroSlider";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Heritage Academy — Learning, rooted in heritage" },
+      {
+        name: "description",
+        content:
+          "Heritage Academy blends classical pedagogy with modern tools. Sponsor a classroom, secure early-bird access, and join a global learning community.",
+      },
+      { property: "og:title", content: "Heritage Academy" },
+      {
+        property: "og:description",
+        content:
+          "Bring world-class classrooms to every child. Heritage roots, modern tools.",
+      },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen">
+      <SiteNav />
+      {/* spacer for fixed nav (utility 36 + main 80 + policy ~32) */}
+      <div style={{ height: 148 }} />
+      <HeroSlider />
+
+      <section className="mx-auto max-w-7xl px-6 py-24">
+        <h2
+          className="font-display text-4xl md:text-5xl font-bold max-w-3xl"
+          style={{ color: "var(--navy)" }}
+        >
+          A curriculum that honors{" "}
+          <span style={{ color: "var(--crimson)" }}>tradition</span> and shapes{" "}
+          <span style={{ color: "var(--emerald)" }}>tomorrow</span>.
+        </h2>
+        <p
+          className="mt-6 max-w-2xl text-lg leading-relaxed"
+          style={{ color: "var(--charcoal)" }}
+        >
+          Three tracks. Hundreds of mentors. One mission — to make deep,
+          beautiful learning available to every family, on every device, in
+          every language.
+        </p>
+      </section>
     </div>
   );
 }
