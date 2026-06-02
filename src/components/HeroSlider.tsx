@@ -56,7 +56,6 @@ const slides = [
   },
 ];
 
-
 export function HeroSlider() {
   const [i, setI] = useState(0);
   const s = slides[i];
@@ -103,17 +102,11 @@ export function HeroSlider() {
             — Heritage Academy · Class of 2026
           </div>
           <h1 className="font-display text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
-            {s.pre}{" "}
-            <span style={{ color: "var(--emerald)" }}>{s.accent1}</span>{" "}
-            {s.mid}
+            {s.pre} <span style={{ color: "var(--emerald)" }}>{s.accent1}</span> {s.mid}
             <br />
-            {s.line2pre}{" "}
-            <span style={{ color: "var(--crimson)" }}>{s.accent2}</span>{" "}
-            {s.line2post}
+            {s.line2pre} <span style={{ color: "var(--crimson)" }}>{s.accent2}</span> {s.line2post}
           </h1>
-          <p className="mt-8 text-base md:text-lg leading-relaxed max-w-xl opacity-90">
-            {s.body}
-          </p>
+          <p className="mt-8 text-base md:text-lg leading-relaxed max-w-xl opacity-90">{s.body}</p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <button
               className="px-8 h-12 rounded-full font-bold text-sm tracking-wider uppercase transition-transform hover:scale-[1.04]"
@@ -124,11 +117,6 @@ export function HeroSlider() {
               }}
             >
               {s.cta}
-            </button>
-            <button
-              className="px-8 h-12 rounded-full font-semibold text-sm tracking-wider uppercase border-2 border-white/30 hover:border-white transition-colors"
-            >
-              Watch the Story
             </button>
           </div>
 
