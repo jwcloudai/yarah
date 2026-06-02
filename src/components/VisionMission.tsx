@@ -2,18 +2,29 @@ import { Globe2, Swords, Crown } from "lucide-react";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-center mb-8">
+    <div className="flex items-center justify-center gap-4 mb-8">
       <span
-        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm tracking-[0.3em] uppercase font-semibold"
-        style={{
-          background: "color-mix(in oklab, var(--crimson) 10%, transparent)",
-          color: "var(--crimson)",
-          border: "1px solid color-mix(in oklab, var(--crimson) 25%, transparent)",
-        }}
+        className="h-px w-16 md:w-24"
+        style={{ background: "color-mix(in oklab, var(--gold) 50%, transparent)" }}
+      />
+      <span
+        className="h-1.5 w-1.5 rounded-full"
+        style={{ background: "var(--gold)" }}
+      />
+      <span
+        className="text-xs md:text-sm tracking-[0.4em] uppercase font-semibold"
+        style={{ color: "var(--gold)" }}
       >
-        <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--crimson)" }} />
         {children}
       </span>
+      <span
+        className="h-1.5 w-1.5 rounded-full"
+        style={{ background: "var(--gold)" }}
+      />
+      <span
+        className="h-px w-16 md:w-24"
+        style={{ background: "color-mix(in oklab, var(--gold) 50%, transparent)" }}
+      />
     </div>
   );
 }
@@ -21,9 +32,9 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 function Divider() {
   return (
     <div className="flex items-center justify-center gap-2 my-6">
-      <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--crimson)" }} />
-      <span className="h-px w-10" style={{ background: "color-mix(in oklab, var(--crimson) 40%, transparent)" }} />
-      <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--crimson)" }} />
+      <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--gold)" }} />
+      <span className="h-px w-10" style={{ background: "var(--gold)" }} />
+      <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--gold)" }} />
     </div>
   );
 }
@@ -34,7 +45,7 @@ function Quote({ side }: { side: "left" | "right" }) {
       className={`font-display text-7xl md:text-8xl leading-none select-none ${
         side === "left" ? "" : "rotate-180 inline-block"
       }`}
-      style={{ color: "color-mix(in oklab, var(--crimson) 35%, transparent)" }}
+      style={{ color: "color-mix(in oklab, var(--gold) 55%, transparent)" }}
       aria-hidden
     >
       “
@@ -47,19 +58,16 @@ const pillars = [
     icon: Globe2,
     title: "Global Reach",
     body: "Communities of light rising from every nation, every background, every season of faith.",
-    color: "var(--crimson)",
   },
   {
     icon: Swords,
     title: "Unshakeable Authority",
     body: "Operating with the mind of Christ — conquering deception and enforcing God's Kingdom on earth.",
-    color: "var(--navy)",
   },
   {
     icon: Crown,
     title: "Destined to Reign",
     body: "Fully qualified to present the Lord's inheritance to Him and reign with Christ for one thousand years.",
-    color: "var(--crimson)",
   },
 ];
 
@@ -67,22 +75,21 @@ export function VisionMission() {
   return (
     <section
       className="relative py-28 md:py-36"
-      style={{ background: "var(--canvas)", color: "var(--navy)" }}
+      style={{ background: "var(--navy)", color: "var(--canvas)" }}
     >
-
       <div className="mx-auto max-w-5xl px-6">
         {/* ============ VISION ============ */}
         <SectionLabel>Vision Statement</SectionLabel>
 
         <h2
           className="font-display text-3xl md:text-5xl font-bold text-center leading-[1.15]"
-          style={{ color: "var(--navy)" }}
+          style={{ color: "var(--canvas)" }}
         >
-          A <span style={{ color: "var(--crimson)" }}>Global</span>,{" "}
-          <span style={{ color: "var(--navy)" }}>Unshakeable</span> Generation —
+          A <span style={{ color: "var(--gold)" }}>Global</span>,{" "}
+          <span style={{ color: "var(--gold)" }}>Unshakeable</span> Generation —
           <br />
           Sons and Daughters of{" "}
-          <span style={{ color: "var(--crimson)" }}>Light</span>
+          <span style={{ color: "var(--gold)" }}>Light</span>
         </h2>
 
         <Divider />
@@ -93,34 +100,34 @@ export function VisionMission() {
           </div>
           <p
             className="font-display italic text-lg md:text-xl leading-relaxed text-center px-6 md:px-16"
-            style={{ color: "color-mix(in oklab, var(--charcoal) 88%, transparent)" }}
+            style={{ color: "color-mix(in oklab, var(--canvas) 88%, transparent)" }}
           >
             "To raise a{" "}
-            <strong style={{ color: "var(--navy)" }}>
+            <strong style={{ color: "var(--gold)" }}>
               global, unshakeable, and matured generation
             </strong>{" "}
             of the Sons and Daughters of Light —{" "}
-            <strong style={{ color: "var(--navy)" }}>
+            <strong style={{ color: "var(--gold)" }}>
               anchored in God's love, filled with the Holy Spirit
             </strong>
             , and operating with the{" "}
-            <strong style={{ color: "var(--navy)" }}>mind of Christ</strong>. We are
+            <strong style={{ color: "var(--gold)" }}>mind of Christ</strong>. We are
             set apart to equip children and adults with{" "}
-            <strong style={{ color: "var(--navy)" }}>
+            <strong style={{ color: "var(--gold)" }}>
               Kingdom wisdom, prophetic insight
             </strong>
             , and{" "}
-            <strong style={{ color: "var(--navy)" }}>practical survival skills</strong>{" "}
+            <strong style={{ color: "var(--gold)" }}>practical survival skills</strong>{" "}
             to conquer deception, preserve life, and{" "}
-            <strong style={{ color: "var(--navy)" }}>
+            <strong style={{ color: "var(--gold)" }}>
               enforce God's authority on earth
             </strong>{" "}
             — boldly prepared to present the{" "}
-            <strong style={{ color: "var(--crimson)" }}>
+            <strong style={{ color: "var(--gold)" }}>
               Lord's inheritance
             </strong>{" "}
             to Him at His glorious second coming, and{" "}
-            <strong style={{ color: "var(--crimson)" }}>
+            <strong style={{ color: "var(--gold)" }}>
               destined to reign with Christ for one thousand years
             </strong>
             ."
@@ -132,16 +139,16 @@ export function VisionMission() {
 
         <p
           className="mt-12 text-base md:text-lg leading-relaxed text-center max-w-3xl mx-auto"
-          style={{ color: "color-mix(in oklab, var(--charcoal) 85%, transparent)" }}
+          style={{ color: "color-mix(in oklab, var(--canvas) 80%, transparent)" }}
         >
           Yarah Life envisions a world where every child and every believer —
           regardless of age, background, or season of faith — knows{" "}
-          <strong style={{ color: "var(--navy)" }}>
+          <strong style={{ color: "var(--canvas)" }}>
             why they were born, Who they belong to
           </strong>
           , and what role they are called to fulfil in the greatest story ever told.
           We see communities of light rising from every nation: overcomers who are{" "}
-          <strong style={{ color: "var(--navy)" }}>
+          <strong style={{ color: "var(--canvas)" }}>
             not shaken by the events of the last days
           </strong>{" "}
           because they have been trained, transformed, and trusted with the Kingdom
@@ -157,29 +164,29 @@ export function VisionMission() {
                 key={p.title}
                 className="rounded-2xl p-7 text-center transition-transform hover:-translate-y-1"
                 style={{
-                  background: "#fff",
-                  border: `1px solid color-mix(in oklab, ${p.color} 25%, transparent)`,
-                  boxShadow: "0 10px 30px -18px color-mix(in oklab, var(--navy) 35%, transparent)",
+                  background: "color-mix(in oklab, var(--canvas) 6%, transparent)",
+                  border: "1px solid color-mix(in oklab, var(--gold) 25%, transparent)",
+                  backdropFilter: "blur(6px)",
                 }}
               >
                 <div
                   className="mx-auto h-12 w-12 rounded-full flex items-center justify-center mb-4"
                   style={{
-                    background: `color-mix(in oklab, ${p.color} 12%, transparent)`,
-                    color: p.color,
+                    background: "color-mix(in oklab, var(--gold) 18%, transparent)",
+                    color: "var(--gold)",
                   }}
                 >
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3
                   className="font-display text-lg font-bold mb-2"
-                  style={{ color: p.color }}
+                  style={{ color: "var(--gold)" }}
                 >
                   {p.title}
                 </h3>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "color-mix(in oklab, var(--charcoal) 80%, transparent)" }}
+                  style={{ color: "color-mix(in oklab, var(--canvas) 80%, transparent)" }}
                 >
                   {p.body}
                 </p>
@@ -194,15 +201,15 @@ export function VisionMission() {
 
           <h2
             className="font-display text-3xl md:text-5xl font-bold text-center leading-[1.15]"
-            style={{ color: "var(--navy)" }}
+            style={{ color: "var(--canvas)" }}
           >
             Deploying a{" "}
-            <span style={{ color: "var(--crimson)" }}>Stage-by-Stage</span> Kingdom
+            <span style={{ color: "var(--gold)" }}>Stage-by-Stage</span> Kingdom
             Academy —
             <br />
             Transforming{" "}
-            <span style={{ color: "var(--navy)" }}>Passive Observers</span> into{" "}
-            <span style={{ color: "var(--crimson)" }}>Active Christ-Bearers</span>
+            <span style={{ color: "var(--gold)" }}>Passive Observers</span> into{" "}
+            <span style={{ color: "var(--gold)" }}>Active Christ-Bearers</span>
           </h2>
 
           <Divider />
@@ -213,38 +220,38 @@ export function VisionMission() {
             </div>
             <p
               className="font-display italic text-lg md:text-xl leading-relaxed text-center px-6 md:px-16"
-              style={{ color: "color-mix(in oklab, var(--charcoal) 88%, transparent)" }}
+              style={{ color: "color-mix(in oklab, var(--canvas) 88%, transparent)" }}
             >
               "Yarah Life exists to deliver a{" "}
-              <strong style={{ color: "var(--navy)" }}>
+              <strong style={{ color: "var(--gold)" }}>
                 comprehensive, stage-by-stage interactive discipleship academy
               </strong>{" "}
               — deploying{" "}
-              <strong style={{ color: "var(--navy)" }}>
+              <strong style={{ color: "var(--gold)" }}>
                 720+ structured, Spirit-led lessons
               </strong>{" "}
               that integrate deep scriptural truth, Hebrew roots, the practice of
               His presence, science, and{" "}
-              <strong style={{ color: "var(--navy)" }}>
+              <strong style={{ color: "var(--gold)" }}>
                 practical survival skills
               </strong>
               . By transforming hearts into the image of Christ and awakening a
               wholehearted love for the Lord, we empower children and adults to
               transition from{" "}
-              <strong style={{ color: "var(--crimson)" }}>
+              <strong style={{ color: "var(--gold)" }}>
                 passive observers into active Christ-bearers
               </strong>
               . Together, we raise faithful stewards who discern the signs of the
               times, walk daily in His presence, and stand fully equipped to{" "}
-              <strong style={{ color: "var(--navy)" }}>
+              <strong style={{ color: "var(--gold)" }}>
                 survive the last days, rescue many alive
               </strong>
               , and{" "}
-              <strong style={{ color: "var(--navy)" }}>
+              <strong style={{ color: "var(--gold)" }}>
                 redeem God's inheritance
               </strong>{" "}
               — ready for the King's return and fully qualified to{" "}
-              <strong style={{ color: "var(--crimson)" }}>
+              <strong style={{ color: "var(--gold)" }}>
                 reign alongside Him.
               </strong>
               "
