@@ -39,16 +39,39 @@ function Index() {
         >
           A curriculum that honors{" "}
           <span style={{ color: "var(--crimson)" }}>tradition</span> and shapes{" "}
-          <span style={{ color: "var(--emerald)" }}>tomorrow</span>.
+          <span style={{ color: "var(--crimson)" }}>tomorrow</span>.
         </h2>
         <p
           className="mt-6 max-w-2xl text-lg leading-relaxed"
           style={{ color: "var(--charcoal)" }}
         >
-          Three tracks. Hundreds of mentors. One mission — to make deep,
+          Three tracks. Hundreds of mentors. One{" "}
+          <strong style={{ color: "var(--crimson)" }}>mission</strong> — to make deep,
           beautiful learning available to every family, on every device, in
           every language.
         </p>
+        <div className="mt-10 flex flex-wrap gap-4">
+          <button
+            className="px-8 h-12 rounded-full font-bold text-sm tracking-wider uppercase transition-transform hover:scale-[1.04]"
+            style={{
+              background: "var(--crimson)",
+              color: "white",
+              boxShadow: "0 12px 30px -10px rgba(220,20,60,0.55)",
+            }}
+          >
+            Explore Curriculum
+          </button>
+          <button
+            className="px-8 h-12 rounded-full font-bold text-sm tracking-wider uppercase transition-transform hover:scale-[1.04] border-2"
+            style={{
+              borderColor: "var(--crimson)",
+              color: "var(--crimson)",
+              background: "transparent",
+            }}
+          >
+            Join Community
+          </button>
+        </div>
       </section>
     </div>
   );
