@@ -103,8 +103,8 @@
   --gold: #FDB813;
   --charcoal: #2C3E50;
   --canvas: #FDFBF7;
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', 'Lora', system-ui, sans-serif;
 }
 
 .dark {
