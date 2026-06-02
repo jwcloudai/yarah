@@ -58,7 +58,7 @@ const pillars = [
     icon: Globe2,
     title: "Global Reach",
     body: "Communities of light rising from every nation, every background, every season of faith.",
-    color: "var(--gold)",
+    color: "var(--crimson)",
   },
   {
     icon: Swords,
@@ -70,7 +70,7 @@ const pillars = [
     icon: Crown,
     title: "Destined to Reign",
     body: "Fully qualified to present the Lord's inheritance to Him and reign with Christ for one thousand years.",
-    color: "var(--gold)",
+    color: "var(--crimson)",
   },
 ];
 
@@ -89,10 +89,11 @@ export function VisionMission() {
           className="font-display text-3xl md:text-5xl font-bold text-center leading-[1.15]"
           style={{ color: "var(--canvas)" }}
         >
-          A <span style={{ color: "var(--gold)" }}>Global</span>,{" "}
+          A <span style={{ color: "var(--crimson)" }}>Global</span>,{" "}
           <span style={{ color: "var(--gold)" }}>Unshakeable</span> Generation —
           <br />
-          Sons and Daughters of Light
+          Sons and Daughters of{" "}
+          <span style={{ color: "var(--crimson)" }}>Light</span>
         </h2>
 
         <Divider />
@@ -207,12 +208,12 @@ export function VisionMission() {
             style={{ color: "var(--canvas)" }}
           >
             Deploying a{" "}
-            <span style={{ color: "var(--gold)" }}>Stage-by-Stage</span> Kingdom
+            <span style={{ color: "var(--crimson)" }}>Stage-by-Stage</span> Kingdom
             Academy —
             <br />
             Transforming{" "}
             <span style={{ color: "var(--gold)" }}>Passive Observers</span> into{" "}
-            <span style={{ color: "var(--gold)" }}>Active Christ-Bearers</span>
+            <span style={{ color: "var(--crimson)" }}>Active Christ-Bearers</span>
           </h2>
 
           <Divider />
