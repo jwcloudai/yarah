@@ -136,6 +136,7 @@ export function SiteNav() {
             <span className="opacity-95 truncate">
               Youth courses launching 1st May 2027 · Adult courses launching 1st September 2027 — support us to launch on time.
             </span>
+            </div>
           </div>
         </div>
       </div>
