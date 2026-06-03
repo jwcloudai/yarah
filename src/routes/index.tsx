@@ -44,6 +44,7 @@ function Index() {
       <AssignmentGeneration />
       <ReigningStandard />
       <EternityInvestment />
+      <CommissioningCurriculum />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
         <h2
