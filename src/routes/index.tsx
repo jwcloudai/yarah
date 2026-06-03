@@ -5,6 +5,7 @@ import { VisionMission } from "@/components/VisionMission";
 import { KingdomJourney } from "@/components/KingdomJourney";
 import { WhyNow } from "@/components/WhyNow";
 import { PropheticDeclarations } from "@/components/PropheticDeclarations";
+import { AssignmentGeneration } from "@/components/AssignmentGeneration";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,6 +38,7 @@ function Index() {
       <KingdomJourney />
       <WhyNow />
       <PropheticDeclarations />
+      <AssignmentGeneration />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
         <h2
