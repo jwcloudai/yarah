@@ -13,7 +13,7 @@ const slides = [
     line2pre: "Born to See the",
     accent2: "King",
     line2post: "Return.",
-    body: "This generation was born to do what every other only prayed for — to see the King return, to reign with Him, and to enforce His victory on the earth.",
+    body: "To see the King return, to reign with Him, and to enforce His victory on the earth.",
     cta: "Stand With Us",
     image: img1.url,
     alt: "Multitudes worshipping as the King returns in glory",
@@ -32,12 +32,12 @@ const slides = [
   },
   {
     pre: "A",
-    accent1: "Prepared",
-    mid: "Generation.",
+    accent1: "he Kingdom of Heaven",
+    mid: "coming",
     line2pre: "Sons & Daughters of",
     accent2: "Light",
     line2post: ".",
-    body: "The Kingdom of Heaven is not coming to a passive generation — it is coming through a prepared one. They do not wait for the world to change. They are the change.",
+    body: "is not  to a passive generation — it is coming through a prepared one. They do not wait for the world to change. They are the change.",
     cta: "Join the Movement",
     image: img3.url,
     alt: "A radiant generation walking forward into the light",
@@ -49,7 +49,7 @@ const slides = [
     line2pre: "Your Children Will",
     accent2: "Stand",
     line2post: "In It.",
-    body: "Every prophet saw this moment — only this generation gets to live it. The question is whether they will stand firm.",
+    body: "the apostles longed for it the saints died for it your children will stand in it the question is whether they will stand firm.",
     cta: "Secure Early-Bird Access",
     image: img4.url,
     alt: "Prophets beholding the scrolls of Isaiah, Daniel and Revelation",
@@ -87,8 +87,7 @@ export function HeroSlider() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(90deg, rgba(10,31,77,0.96) 0%, rgba(10,31,77,0.88) 40%, rgba(10,31,77,0) 60%)",
+            background: "linear-gradient(90deg, rgba(10,31,77,0.96) 0%, rgba(10,31,77,0.88) 40%, rgba(10,31,77,0) 60%)",
           }}
         />
       </div>
