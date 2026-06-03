@@ -73,7 +73,7 @@ export function SiteNav() {
             </a>
 
             {/* Links */}
-            <nav className="hidden xl:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-1">
               {links.map((l, i) => (
                 <a
                   key={l.label}
