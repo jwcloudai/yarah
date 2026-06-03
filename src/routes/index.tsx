@@ -4,6 +4,7 @@ import { HeroSlider } from "@/components/HeroSlider";
 import { VisionMission } from "@/components/VisionMission";
 import { KingdomJourney } from "@/components/KingdomJourney";
 import { WhyNow } from "@/components/WhyNow";
+import { PropheticDeclarations } from "@/components/PropheticDeclarations";
 
 export const Route = createFileRoute("/")({
   head: () => ({
