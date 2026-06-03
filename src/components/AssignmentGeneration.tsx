@@ -1,6 +1,6 @@
 import { Sprout, Cross, Swords, ArrowRight } from "lucide-react";
 
-function Label({ children }: { children: React.ReactNode }) {
+function Label() {
   return (
     <div className="flex items-center justify-center gap-4 mb-6">
       <span className="h-1.5 w-1.5 rotate-45" style={{ background: "var(--gold)" }} />
