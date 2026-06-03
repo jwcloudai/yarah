@@ -122,10 +122,11 @@ export function SiteNav() {
 
         {/* Announcement strip */}
         <div className="px-4 pb-2">
-          <div
-            className="max-w-4xl rounded-br-3xl text-xs text-white py-2 pl-5 pr-10 flex items-center gap-3"
-            style={{ background: "var(--navy)" }}
-          >
+          <div className="mx-auto max-w-7xl">
+            <div
+              className="max-w-4xl rounded-br-3xl text-xs text-white py-2 pl-5 pr-10 flex items-center gap-3"
+              style={{ background: "var(--navy)" }}
+            >
             <span
               className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider shrink-0"
               style={{ background: "var(--gold)", color: "var(--charcoal)" }}
@@ -135,6 +136,7 @@ export function SiteNav() {
             <span className="opacity-95 truncate">
               Youth courses launching 1st May 2027 · Adult courses launching 1st September 2027 — support us to launch on time.
             </span>
+            </div>
           </div>
         </div>
       </div>
