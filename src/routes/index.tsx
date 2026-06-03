@@ -9,6 +9,7 @@ import { AssignmentGeneration } from "@/components/AssignmentGeneration";
 import { ReigningStandard } from "@/components/ReigningStandard";
 import { EternityInvestment } from "@/components/EternityInvestment";
 import { CommissioningCurriculum } from "@/components/CommissioningCurriculum";
+import { FreeDownload } from "@/components/FreeDownload";
 
 export const Route = createFileRoute("/")({
   head: () => ({
