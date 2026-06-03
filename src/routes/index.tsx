@@ -5,6 +5,7 @@ import { VisionMission } from "@/components/VisionMission";
 import { KingdomJourney } from "@/components/KingdomJourney";
 import { WhyNow } from "@/components/WhyNow";
 import { PropheticDeclarations } from "@/components/PropheticDeclarations";
+import { AssignmentGeneration } from "@/components/AssignmentGeneration";
 
 export const Route = createFileRoute("/")({
   head: () => ({
