@@ -8,6 +8,7 @@ import { PropheticDeclarations } from "@/components/PropheticDeclarations";
 import { AssignmentGeneration } from "@/components/AssignmentGeneration";
 import { ReigningStandard } from "@/components/ReigningStandard";
 import { EternityInvestment } from "@/components/EternityInvestment";
+import { CommissioningCurriculum } from "@/components/CommissioningCurriculum";
 
 export const Route = createFileRoute("/")({
   head: () => ({
