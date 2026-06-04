@@ -13,22 +13,6 @@ import { FreeDownload } from "@/components/FreeDownload";
 import { FundingPhases } from "@/components/FundingPhases";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Heritage Academy — Learning, rooted in heritage" },
-      {
-        name: "description",
-        content:
-          "Heritage Academy blends classical pedagogy with modern tools. Sponsor a classroom, secure early-bird access, and join a global learning community.",
-      },
-      { property: "og:title", content: "Heritage Academy" },
-      {
-        property: "og:description",
-        content:
-          "Bring world-class classrooms to every child. Heritage roots, modern tools.",
-      },
-    ],
-  }),
   component: Index,
 });
 
@@ -36,7 +20,6 @@ function Index() {
   return (
     <div className="min-h-screen">
       <SiteNav />
-      {/* spacer for fixed nav: smaller on mobile (no utility bar, shorter nav) */}
       <div className="h-[120px] sm:h-[168px]" />
       <HeroSlider />
       <VisionMission />
