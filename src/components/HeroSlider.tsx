@@ -62,6 +62,11 @@ export function HeroSlider() {
   const prev = () => setI((p) => (p - 1 + slides.length) % slides.length);
   const next = () => setI((p) => (p + 1) % slides.length);
 
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "var(--navy)" }}>
       {/* Image with diagonal mask (desktop) / cinematic poster (mobile) */}
