@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Mail, Clock, Search, Facebook, Instagram, Linkedin, ShoppingBag, Menu, X } from "lucide-react";
-import logoAsset from "@/assets/yarah-logo.png.asset.json";
+import logoAsset from "@/assets/logo.png";
 
 const links = [
   { label: "Why YARAH LIFE?", href: "#" },
@@ -51,7 +51,7 @@ export function SiteNav() {
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 sm:gap-3 min-w-0">
               <img
-                src={logoAsset.url}
+                src={logoAsset}
                 alt="Yarah Life"
                 width={56}
                 height={56}

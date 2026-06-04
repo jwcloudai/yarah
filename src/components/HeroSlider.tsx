@@ -1,9 +1,9 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import img1 from "@/assets/prophecy-1.png.asset.json";
-import img2 from "@/assets/prophecy-2.png.asset.json";
-import img3 from "@/assets/prophecy-3.png.asset.json";
-import img4 from "@/assets/prophecy-4.png.asset.json";
+import img1 from "@/assets/pro1.png";
+import img2 from "@/assets/pro2.png";
+import img3 from "@/assets/pro3.png";
+import img4 from "@/assets/pro4.png";
 
 const slides = [
   {
@@ -15,7 +15,7 @@ const slides = [
     line2post: "Return.",
     body: "To see the King return, to reign with Him, and to enforce His victory on the earth.",
     cta: "Stand With Us",
-    image: img1.url,
+    image: img1,
     alt: "Multitudes worshipping as the King returns in glory",
   },
   {
@@ -27,7 +27,7 @@ const slides = [
     line2post: ".",
     body: "Yarah Life does not raise a generation in fear of the mark — it raises a generation so shaped in Christ that the choice is never in doubt.",
     cta: "Prepare a Child",
-    image: img2.url,
+    image: img2,
     alt: "The choice between the mark of the beast and the crown of Christ",
   },
   {
@@ -39,7 +39,7 @@ const slides = [
     line2post: ".",
     body: "is not coming to a passive generation — it is coming through a prepared one. They do not wait for the world to change. They are the change.",
     cta: "Join the Movement",
-    image: img3.url,
+    image: img3,
     alt: "A radiant generation walking forward into the light",
   },
   {
@@ -51,7 +51,7 @@ const slides = [
     line2post: "In It.",
     body: "The prophets longed for it, the apostles longed for it, the saints died for it — your children will stand in it. The question is whether they will stand firm.",
     cta: "Secure Early-Bird Access",
-    image: img4.url,
+    image: img4,
     alt: "Prophets beholding the scrolls of Isaiah, Daniel and Revelation",
   },
 ];
