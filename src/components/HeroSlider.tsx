@@ -64,14 +64,14 @@ export function HeroSlider() {
 
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "var(--navy)" }}>
-      {/* Image with diagonal mask (desktop) / full background (mobile) */}
+      {/* Image with diagonal mask (desktop) / cinematic poster (mobile) */}
       <div className="absolute inset-0">
         <img
           src={s.image}
           alt={s.alt}
           width={1600}
           height={900}
-          className="absolute inset-0 w-full h-full object-cover hero-image"
+          className="absolute inset-0 w-full h-full object-cover hero-image animate-[heroZoom_18s_ease-out_infinite_alternate]"
         />
         {/* White diagonal accent — desktop only */}
         <div
@@ -82,53 +82,114 @@ export function HeroSlider() {
             opacity: 0.92,
           }}
         />
-        {/* Navy overlay — heavier on mobile for legibility */}
+        {/* Mobile: cinematic bottom-up navy gradient so the image stays visible up top */}
         <div
           className="absolute inset-0 md:hidden"
-          style={{ background: "linear-gradient(180deg, rgba(10,31,77,0.85) 0%, rgba(10,31,77,0.92) 100%)" }}
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(10,31,77,0.30) 0%, rgba(10,31,77,0.55) 35%, rgba(10,31,77,0.92) 70%, rgba(10,31,77,0.98) 100%)",
+          }}
         />
+        {/* Mobile: gold radial glow accent */}
+        <div
+          className="absolute md:hidden -top-24 -right-20 h-64 w-64 rounded-full blur-3xl pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(253,184,19,0.35), transparent 70%)" }}
+        />
+        <div
+          className="absolute md:hidden -bottom-28 -left-20 h-72 w-72 rounded-full blur-3xl pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(220,20,60,0.30), transparent 70%)" }}
+        />
+        {/* Desktop overlay */}
         <div
           className="absolute inset-0 hidden md:block"
           style={{
-            background: "linear-gradient(90deg, rgba(10,31,77,0.96) 0%, rgba(10,31,77,0.88) 40%, rgba(10,31,77,0) 60%)",
+            background:
+              "linear-gradient(90deg, rgba(10,31,77,0.96) 0%, rgba(10,31,77,0.88) 40%, rgba(10,31,77,0) 60%)",
           }}
         />
-        <style>{`@media (min-width: 768px){.hero-image{clip-path: polygon(45% 0, 100% 0, 100% 100%, 30% 100%);} }`}</style>
+        <style>{`
+          @media (min-width: 768px){.hero-image{clip-path: polygon(45% 0, 100% 0, 100% 100%, 30% 100%);} }
+          @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+          @keyframes shimmer { 0%,100% { box-shadow: 0 12px 30px -10px rgba(253,184,19,0.55); } 50% { box-shadow: 0 12px 40px -8px rgba(253,184,19,0.85); } }
+          @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        `}</style>
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 py-20 sm:py-32 md:py-44 min-h-[520px] sm:min-h-[640px] flex items-center">
-        <div className="max-w-2xl text-white">
-          <div
-            className="inline-block mb-4 sm:mb-6 text-[10px] sm:text-xs tracking-[0.3em] uppercase font-semibold"
-            style={{ color: "var(--gold)" }}
-          >
-            — Heritage Academy · Class of 2026
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 pt-44 pb-14 sm:pt-32 sm:pb-20 md:py-44 min-h-[640px] sm:min-h-[640px] flex items-end md:items-center">
+        <div className="max-w-2xl text-white w-full">
+          {/* Decorative ornament row — mobile only */}
+          <div className="flex md:hidden items-center gap-2 mb-4">
+            <span className="h-px w-8" style={{ background: "var(--gold)" }} />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--gold)" }} />
+            <span className="h-px flex-1" style={{ background: "color-mix(in oklab, var(--gold) 35%, transparent)" }} />
+            <span className="h-1.5 w-1.5 rotate-45" style={{ background: "var(--crimson)" }} />
           </div>
-          <h1 className="font-display text-3xl sm:text-5xl md:text-7xl font-bold leading-[1.1] md:leading-[1.05] tracking-tight">
+
+          <div
+            className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 py-1.5 rounded-full text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase font-semibold"
+            style={{
+              color: "var(--gold)",
+              background: "color-mix(in oklab, var(--gold) 12%, transparent)",
+              border: "1px solid color-mix(in oklab, var(--gold) 35%, transparent)",
+            }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: "var(--gold)" }} />
+            Heritage Academy · Class of 2026
+          </div>
+          <h1 className="font-display text-[2.15rem] leading-[1.05] sm:text-5xl md:text-7xl font-bold sm:leading-[1.1] md:leading-[1.05] tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
             {s.pre} <span style={{ color: "var(--crimson)" }}>{s.accent1}</span> {s.mid}
             <br />
-            {s.line2pre} <span style={{ color: "var(--gold)" }}>{s.accent2}</span> {s.line2post}
+            {s.line2pre}{" "}
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: "linear-gradient(120deg, var(--gold) 0%, #ffe89a 50%, var(--gold) 100%)" }}
+            >
+              {s.accent2}
+            </span>{" "}
+            {s.line2post}
           </h1>
-          <p className="mt-5 sm:mt-8 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl opacity-90">{s.body}</p>
-          <div className="mt-7 sm:mt-10 flex flex-wrap items-center gap-4">
+          <p className="mt-5 sm:mt-8 text-[15px] sm:text-base md:text-lg leading-relaxed max-w-xl opacity-95">
+            {s.body}
+          </p>
+          <div className="mt-7 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
             <button
-              className="px-6 sm:px-8 h-11 sm:h-12 rounded-full font-bold text-xs sm:text-sm tracking-wider uppercase transition-transform hover:scale-[1.04]"
+              className="group inline-flex items-center gap-2 px-7 sm:px-8 h-12 sm:h-12 rounded-full font-bold text-xs sm:text-sm tracking-wider uppercase transition-transform hover:scale-[1.04]"
               style={{
-                background: "var(--gold)",
+                background: "linear-gradient(135deg, var(--gold) 0%, #ffd35c 100%)",
                 color: "var(--charcoal)",
-                boxShadow: "0 12px 30px -10px rgba(253,184,19,0.55)",
+                animation: "shimmer 3s ease-in-out infinite",
               }}
             >
               {s.cta}
+              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </button>
+            <span
+              className="hidden sm:inline-flex text-[11px] tracking-[0.25em] uppercase font-semibold"
+              style={{ color: "color-mix(in oklab, var(--gold) 80%, white)" }}
+            >
+              Limited · Founding Cohort
+            </span>
+          </div>
+
+          {/* Trust strip — mobile */}
+          <div
+            className="md:hidden mt-6 flex items-center gap-3 text-[10px] tracking-[0.2em] uppercase font-semibold"
+            style={{ color: "color-mix(in oklab, var(--canvas) 75%, transparent)" }}
+          >
+            <span>720+ Lessons</span>
+            <span className="h-1 w-1 rounded-full" style={{ background: "var(--gold)" }} />
+            <span>6 Tracks</span>
+            <span className="h-1 w-1 rounded-full" style={{ background: "var(--gold)" }} />
+            <span>All Ages</span>
           </div>
 
           {/* Controls */}
-          <div className="mt-10 sm:mt-16 flex items-center gap-4">
+          <div className="mt-8 sm:mt-16 flex items-center gap-3 sm:gap-4">
             <button
               onClick={prev}
               aria-label="Previous"
-              className="h-10 w-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10"
+              className="h-10 w-10 rounded-full border flex items-center justify-center hover:bg-white/10 transition-colors"
+              style={{ borderColor: "color-mix(in oklab, var(--gold) 45%, transparent)" }}
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -149,10 +210,17 @@ export function HeroSlider() {
             <button
               onClick={next}
               aria-label="Next"
-              className="h-10 w-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10"
+              className="h-10 w-10 rounded-full border flex items-center justify-center hover:bg-white/10 transition-colors"
+              style={{ borderColor: "color-mix(in oklab, var(--gold) 45%, transparent)" }}
             >
               <ChevronRight className="h-4 w-4" />
             </button>
+            <span
+              className="ml-auto text-[10px] tracking-[0.3em] uppercase font-semibold"
+              style={{ color: "color-mix(in oklab, var(--gold) 80%, transparent)" }}
+            >
+              0{i + 1} / 0{slides.length}
+            </span>
           </div>
         </div>
       </div>
