@@ -162,25 +162,33 @@ export function SiteNav() {
           )}
         </div>
 
-        {/* Announcement strip */}
+        {/* Announcement strip — scrolling marquee */}
         <div className="px-3 sm:px-4 pb-2">
           <div className="mx-auto max-w-7xl">
             <div
-              className="max-w-4xl rounded-br-3xl text-[11px] sm:text-xs text-white py-2 pl-3 sm:pl-5 pr-4 sm:pr-10 flex items-center gap-2 sm:gap-3"
+              className="max-w-4xl rounded-br-3xl text-[11px] sm:text-xs text-white py-2 overflow-hidden relative"
               style={{ background: "var(--navy)" }}
             >
-            <span
-              className="px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-bold tracking-wider shrink-0"
-              style={{ background: "var(--gold)", color: "var(--charcoal)" }}
-            >
-              ANNOUNCEMENT
-            </span>
-            <span className="opacity-95 truncate">
-              Youth courses launching 1st May 2027 · Adult courses launching 1st September 2027 — support us to launch on time.
-            </span>
+              <div className="flex items-center gap-2 sm:gap-3 whitespace-nowrap animate-[marquee_18s_linear_infinite]">
+                <span
+                  className="px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-bold tracking-wider shrink-0"
+                  style={{ background: "var(--gold)", color: "var(--charcoal)" }}
+                >
+                  ANNOUNCEMENT
+                </span>
+                <span className="opacity-95">
+                  Youth courses launching 1st May 2027 · Adult courses launching 1st September 2027 — support us to launch on time. &nbsp;&nbsp;&nbsp;&nbsp; Youth courses launching 1st May 2027 · Adult courses launching 1st September 2027 — support us to launch on time. &nbsp;&nbsp;&nbsp;&nbsp; Youth courses launching 1st May 2027 · Adult courses launching 1st September 2027 — support us to launch on time.
+                </span>
+              </div>
             </div>
           </div>
         </div>
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </div>
     </header>
   );
