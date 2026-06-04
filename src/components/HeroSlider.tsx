@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import img1 from "@/assets/prophecy-1.png.asset.json";
 import img2 from "@/assets/prophecy-2.png.asset.json";
 import img3 from "@/assets/prophecy-3.png.asset.json";
