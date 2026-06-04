@@ -31,23 +31,23 @@ export function FreeDownload() {
     <section className="py-24 md:py-32" style={{ background: "var(--canvas)" }}>
       <div className="mx-auto max-w-4xl px-6">
         {/* Eyebrow */}
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <span className="h-1.5 w-1.5 rotate-45" style={{ background: "var(--gold)" }} />
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-6">
+          <span className="hidden sm:block h-1.5 w-1.5 rotate-45" style={{ background: "var(--gold)" }} />
           <span
-            className="h-px w-16 md:w-24"
+            className="hidden sm:block h-px w-16 md:w-24"
             style={{ background: "color-mix(in oklab, var(--navy) 25%, transparent)" }}
           />
           <span
-            className="text-[11px] md:text-xs tracking-[0.35em] uppercase font-semibold"
+            className="text-[10px] sm:text-[11px] md:text-xs tracking-[0.25em] sm:tracking-[0.35em] uppercase font-semibold text-center"
             style={{ color: "var(--navy)", opacity: 0.75 }}
           >
             Free Kingdom Resource — Subscribe &amp; Download
           </span>
           <span
-            className="h-px w-16 md:w-24"
+            className="hidden sm:block h-px w-16 md:w-24"
             style={{ background: "color-mix(in oklab, var(--navy) 25%, transparent)" }}
           />
-          <span className="h-1.5 w-1.5 rotate-45" style={{ background: "var(--gold)" }} />
+          <span className="hidden sm:block h-1.5 w-1.5 rotate-45" style={{ background: "var(--gold)" }} />
         </div>
 
         <h2

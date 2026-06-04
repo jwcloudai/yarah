@@ -137,7 +137,7 @@ export function FundingPhases() {
             {/* Progress */}
             <div className="mt-4">
               <div
-                className="flex flex-wrap items-center justify-between text-[11px] tracking-[0.2em] uppercase font-semibold mb-2"
+                className="flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[11px] tracking-[0.15em] sm:tracking-[0.2em] uppercase font-semibold mb-2"
                 style={{ color: "color-mix(in oklab, var(--canvas) 75%, transparent)" }}
               >
                 <span>$34,000 raised · 412 supporters · 87 days left</span>

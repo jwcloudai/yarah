@@ -36,8 +36,8 @@ function Index() {
   return (
     <div className="min-h-screen">
       <SiteNav />
-      {/* spacer for fixed nav (utility 36 + main 80 + policy ~32) */}
-      <div style={{ height: 168 }} />
+      {/* spacer for fixed nav: smaller on mobile (no utility bar, shorter nav) */}
+      <div className="h-[120px] sm:h-[168px]" />
       <HeroSlider />
       <VisionMission />
       <KingdomJourney />

@@ -42,7 +42,7 @@ function Divider() {
 function Quote({ side }: { side: "left" | "right" }) {
   return (
     <span
-      className={`font-display text-7xl md:text-8xl leading-none select-none ${
+      className={`font-display text-5xl sm:text-7xl md:text-8xl leading-none select-none ${
         side === "left" ? "" : "rotate-180 inline-block"
       }`}
       style={{ color: "color-mix(in oklab, var(--gold) 55%, transparent)" }}
