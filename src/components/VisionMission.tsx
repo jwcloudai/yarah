@@ -156,7 +156,7 @@ export function VisionMission() {
         </p>
 
         {/* ============ PILLARS ============ */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 mt-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-16">
           {pillars.map((p) => {
             const Icon = p.icon;
             return (
