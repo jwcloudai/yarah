@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import img1 from "@/assets/prophecy-1.png.asset.json";
 import img2 from "@/assets/prophecy-2.png.asset.json";
 import img3 from "@/assets/prophecy-3.png.asset.json";
@@ -61,6 +61,11 @@ export function HeroSlider() {
   const s = slides[i];
   const prev = () => setI((p) => (p - 1 + slides.length) % slides.length);
   const next = () => setI((p) => (p + 1) % slides.length);
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "var(--navy)" }}>
