@@ -22,31 +22,36 @@ export function SiteNav() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="relative" style={{ background: "var(--canvas)", borderBottom: "1px solid color-mix(in oklab, var(--navy) 10%, transparent)" }}>
-        {/* Top utility bar — hidden on mobile */}
-        <div className="hidden sm:flex mx-auto max-w-7xl px-6 h-10 items-center justify-end gap-6 text-xs" style={{ color: "var(--navy)" }}>
-          <span className="hidden sm:flex items-center gap-2 opacity-95">
+      <div className="relative">
+        {/* Top utility bar — hidden on mobile, fully transparent */}
+        <div className="hidden sm:flex mx-auto max-w-7xl px-6 h-10 items-center justify-end gap-6 text-xs" style={{ color: "var(--canvas)" }}>
+          <span className="hidden sm:flex items-center gap-2 opacity-90">
             <Mail className="h-3.5 w-3.5" />
             <span>info@yarahlife.com</span>
           </span>
-          <span className="hidden md:flex items-center gap-2 opacity-95">
+          <span className="hidden md:flex items-center gap-2 opacity-90">
             <Clock className="h-3.5 w-3.5" />
             <span>Mon – Fri · 9:00 AM – 4:00 PM</span>
           </span>
-          <div className="flex items-center gap-3 opacity-95">
+          <div className="flex items-center gap-3 opacity-90">
             <a href="#" aria-label="Facebook"><Facebook className="h-3.5 w-3.5" /></a>
             <a href="#" aria-label="LinkedIn"><Linkedin className="h-3.5 w-3.5" /></a>
             <a href="#" aria-label="Instagram"><Instagram className="h-3.5 w-3.5" /></a>
           </div>
         </div>
 
-        {/* White rounded nav bar */}
+        {/* Floating navbar with transparent background and backdrop blur */}
         <div className="px-3 sm:px-4 pt-2 sm:pt-0 pb-3">
           <div
-            className={`mx-auto max-w-7xl rounded-2xl flex items-center justify-between pl-3 sm:pl-5 pr-2 sm:pr-3 h-[64px] sm:h-[78px] transition-shadow ${
-              scrolled ? "shadow-xl" : "shadow-md"
+            className={`mx-auto max-w-7xl rounded-3xl flex items-center justify-between pl-3 sm:pl-5 pr-2 sm:pr-3 h-[64px] sm:h-[78px] transition-all duration-300 ${
+              scrolled ? "shadow-2xl" : "shadow-lg"
             }`}
-            style={{ background: "var(--canvas)" }}
+            style={{ 
+              background: "rgba(253, 251, 247, 0.08)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "1px solid rgba(253, 184, 19, 0.15)"
+            }}
           >
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -60,13 +65,13 @@ export function SiteNav() {
               <div className="leading-tight min-w-0">
                 <div
                   className="font-display text-lg sm:text-2xl font-bold tracking-tight"
-                  style={{ color: "var(--navy)" }}
+                  style={{ color: "var(--canvas)" }}
                 >
-                  YARAH <span style={{ color: "var(--crimson)" }}>LIFE</span>
+                  YARAH <span style={{ color: "var(--gold)" }}>LIFE</span>
                 </div>
                 <div
                   className="hidden sm:block text-[10px] tracking-[0.2em] uppercase"
-                  style={{ color: "var(--charcoal)", opacity: 0.65 }}
+                  style={{ color: "var(--canvas)", opacity: 0.75 }}
                 >
                   Kingdom Learning Community
                 </div>
@@ -79,11 +84,11 @@ export function SiteNav() {
                 <a
                   key={l.label}
                   href={l.href}
-                  className="px-4 py-2.5 rounded-full text-[14px] font-medium transition-colors whitespace-nowrap"
+                  className="px-4 py-2.5 rounded-full text-[14px] font-medium transition-all hover:bg-white/10 whitespace-nowrap"
                   style={
                     i === 0
                       ? { background: "var(--crimson)", color: "white" }
-                      : { color: "var(--charcoal)" }
+                      : { color: "var(--canvas)" }
                   }
                 >
                   {l.label}
@@ -95,15 +100,15 @@ export function SiteNav() {
             <div className="flex items-center gap-1 sm:gap-2">
               <button
                 aria-label="Search"
-                className="hidden sm:flex h-9 w-9 rounded-full items-center justify-center hover:bg-black/5"
-                style={{ color: "var(--charcoal)" }}
+                className="hidden sm:flex h-9 w-9 rounded-full items-center justify-center hover:bg-white/10 transition-colors"
+                style={{ color: "var(--canvas)" }}
               >
                 <Search className="h-4 w-4" />
               </button>
               <button
                 aria-label="Cart"
-                className="hidden sm:flex h-9 w-9 rounded-full items-center justify-center hover:bg-black/5"
-                style={{ color: "var(--charcoal)" }}
+                className="hidden sm:flex h-9 w-9 rounded-full items-center justify-center hover:bg-white/10 transition-colors"
+                style={{ color: "var(--canvas)" }}
               >
                 <ShoppingBag className="h-4 w-4" />
               </button>
@@ -121,8 +126,8 @@ export function SiteNav() {
               <button
                 aria-label="Toggle menu"
                 onClick={() => setOpen((v) => !v)}
-                className="lg:hidden h-10 w-10 rounded-full flex items-center justify-center"
-                style={{ color: "var(--navy)" }}
+                className="lg:hidden h-10 w-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
+                style={{ color: "var(--canvas)" }}
               >
                 {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
@@ -132,8 +137,13 @@ export function SiteNav() {
           {/* Mobile menu panel */}
           {open && (
             <div
-              className="lg:hidden mx-auto max-w-7xl mt-2 rounded-2xl p-3 shadow-xl"
-              style={{ background: "var(--canvas)", border: "1px solid color-mix(in oklab, var(--navy) 10%, transparent)" }}
+              className="lg:hidden mx-auto max-w-7xl mt-2 rounded-3xl p-3 shadow-2xl"
+              style={{ 
+                background: "rgba(253, 251, 247, 0.08)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                border: "1px solid rgba(253, 184, 19, 0.15)"
+              }}
             >
               <nav className="flex flex-col gap-1">
                 {links.map((l, i) => (
@@ -141,11 +151,11 @@ export function SiteNav() {
                     key={l.label}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="px-4 py-3 rounded-xl text-[15px] font-medium"
+                    className="px-4 py-3 rounded-xl text-[15px] font-medium transition-colors"
                     style={
                       i === 0
                         ? { background: "var(--crimson)", color: "white" }
-                        : { color: "var(--charcoal)" }
+                        : { color: "var(--canvas)", background: "rgba(255, 255, 255, 0.05)" }
                     }
                   >
                     {l.label}
@@ -162,12 +172,16 @@ export function SiteNav() {
           )}
         </div>
 
-        {/* Announcement strip — scrolling marquee */}
+        {/* Announcement strip — floating style with transparency */}
         <div className="px-3 sm:px-4 pb-2">
           <div className="mx-auto max-w-7xl">
             <div
               className="max-w-4xl rounded-br-3xl text-[11px] sm:text-xs text-white py-2 overflow-hidden relative"
-              style={{ background: "var(--navy)" }}
+              style={{ 
+                background: "rgba(10, 31, 77, 0.85)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)"
+              }}
             >
               <div className="flex items-center gap-2 sm:gap-3 whitespace-nowrap animate-[marquee_18s_linear_infinite]">
                 <span
