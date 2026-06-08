@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { submitForm } from "@/lib/jotform";
 
 export function CustomContactForm() {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    message: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -16,19 +15,30 @@ export function CustomContactForm() {
     setErrorMessage("");
 
     try {
-      // Map form fields to JotForm field IDs
-      // Replace q3_name, q4_email, q5_message with your actual field IDs from JotForm
-      const result = await submitForm({
-        q3_name: formData.name,
-        q4_email: formData.email,
-        q5_message: formData.message,
-      });
+      // Create form data matching JotForm's expected format
+      const formSubmitData = new FormData();
+      formSubmitData.append("q3_name[first]", formData.firstName);
+      formSubmitData.append("q3_name[last]", formData.lastName);
+      formSubmitData.append("q4_email", formData.email);
 
-      console.log("Form submitted successfully:", result);
+      // Submit directly to JotForm's submit endpoint
+      const response = await fetch(
+        `https://submit.jotform.com/submit/${import.meta.env.VITE_JOTFORM_FORM_ID}`,
+        {
+          method: "POST",
+          body: formSubmitData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      console.log("Form submitted successfully");
       setStatus("success");
       
       // Reset form
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ firstName: "", lastName: "", email: "" });
     } catch (error) {
       console.error("Form submission error:", error);
       setStatus("error");
@@ -36,7 +46,7 @@ export function CustomContactForm() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -101,20 +111,20 @@ export function CustomContactForm() {
           }}
         >
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name field */}
+            {/* First Name field */}
             <div>
               <label
-                htmlFor="name"
+                htmlFor="firstName"
                 className="block text-sm font-semibold mb-2"
                 style={{ color: "var(--navy)" }}
               >
-                Full Name *
+                First Name *
               </label>
               <input
                 type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all"
@@ -122,7 +132,33 @@ export function CustomContactForm() {
                   borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
                   background: "var(--canvas)",
                 }}
-                placeholder="Your name"
+                placeholder="Your first name"
+                disabled={status === "submitting"}
+              />
+            </div>
+
+            {/* Last Name field */}
+            <div>
+              <label
+                htmlFor="lastName"
+                className="block text-sm font-semibold mb-2"
+                style={{ color: "var(--navy)" }}
+              >
+                Last Name *
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all"
+                style={{
+                  borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                  background: "var(--canvas)",
+                }}
+                placeholder="Your last name"
                 disabled={status === "submitting"}
               />
             </div>
@@ -149,32 +185,6 @@ export function CustomContactForm() {
                   background: "var(--canvas)",
                 }}
                 placeholder="your.email@example.com"
-                disabled={status === "submitting"}
-              />
-            </div>
-
-            {/* Message field */}
-            <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-semibold mb-2"
-                style={{ color: "var(--navy)" }}
-              >
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={6}
-                className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all resize-none"
-                style={{
-                  borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
-                  background: "var(--canvas)",
-                }}
-                placeholder="Tell us how we can help..."
                 disabled={status === "submitting"}
               />
             </div>
