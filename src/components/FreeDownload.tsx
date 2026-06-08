@@ -19,12 +19,47 @@ const tags = [
 export function FreeDownload() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
     if (!name.trim() || !email.trim()) return;
-    setSubmitted(true);
+    
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      // Create form data matching JotForm's expected format
+      const formSubmitData = new FormData();
+      formSubmitData.append("q3_name[first]", name.split(" ")[0] || name);
+      formSubmitData.append("q3_name[last]", name.split(" ").slice(1).join(" ") || "");
+      formSubmitData.append("q4_email", email);
+
+      // Submit directly to JotForm's submit endpoint
+      const response = await fetch(
+        `https://submit.jotform.com/submit/${import.meta.env.VITE_JOTFORM_FORM_ID}`,
+        {
+          method: "POST",
+          body: formSubmitData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      console.log("Form submitted successfully to JotForm");
+      setStatus("success");
+      
+      // Reset form
+      setName("");
+      setEmail("");
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to submit form");
+    }
   }
 
   return (
@@ -150,7 +185,7 @@ export function FreeDownload() {
             resources.
           </p>
 
-          {submitted ? (
+          {status === "success" ? (
             <div
               className="mt-6 rounded-xl px-6 py-5 text-center"
               style={{
@@ -163,48 +198,65 @@ export function FreeDownload() {
               prophetic document.
             </div>
           ) : (
-            <form onSubmit={onSubmit} className="mt-6 space-y-3">
-              <input
-                type="text"
-                required
-                placeholder="Your full name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                maxLength={100}
-                className="w-full h-12 rounded-xl px-5 text-sm md:text-base outline-none transition-all focus:ring-2"
-                style={{
-                  background: "var(--canvas)",
-                  border: "1px solid color-mix(in oklab, var(--navy) 18%, transparent)",
-                  color: "var(--charcoal)",
-                }}
-              />
-              <input
-                type="email"
-                required
-                placeholder="Your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                maxLength={255}
-                className="w-full h-12 rounded-xl px-5 text-sm md:text-base outline-none transition-all focus:ring-2"
-                style={{
-                  background: "var(--canvas)",
-                  border: "1px solid color-mix(in oklab, var(--navy) 18%, transparent)",
-                  color: "var(--charcoal)",
-                }}
-              />
-              <button
-                type="submit"
-                className="w-full h-12 rounded-xl font-bold text-sm tracking-[0.15em] uppercase flex items-center justify-center gap-2 transition-transform hover:scale-[1.01]"
-                style={{
-                  background: "var(--navy)",
-                  color: "white",
-                  boxShadow: "0 12px 28px -12px rgba(15,23,55,0.6)",
-                }}
-              >
-                <Download className="h-4 w-4" />
-                Subscribe &amp; Download Free
-              </button>
-            </form>
+            <>
+              {status === "error" && (
+                <div
+                  className="mt-6 rounded-xl px-6 py-5 text-center"
+                  style={{
+                    background: "color-mix(in oklab, var(--crimson) 10%, transparent)",
+                    border: "1px solid var(--crimson)",
+                    color: "var(--crimson)",
+                  }}
+                >
+                  <strong>Error:</strong> {errorMessage || "Failed to submit. Please try again."}
+                </div>
+              )}
+              <form onSubmit={onSubmit} className="mt-6 space-y-3">
+                <input
+                  type="text"
+                  required
+                  placeholder="Your full name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  maxLength={100}
+                  disabled={status === "submitting"}
+                  className="w-full h-12 rounded-xl px-5 text-sm md:text-base outline-none transition-all focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{
+                    background: "var(--canvas)",
+                    border: "1px solid color-mix(in oklab, var(--navy) 18%, transparent)",
+                    color: "var(--charcoal)",
+                  }}
+                />
+                <input
+                  type="email"
+                  required
+                  placeholder="Your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  maxLength={255}
+                  disabled={status === "submitting"}
+                  className="w-full h-12 rounded-xl px-5 text-sm md:text-base outline-none transition-all focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{
+                    background: "var(--canvas)",
+                    border: "1px solid color-mix(in oklab, var(--navy) 18%, transparent)",
+                    color: "var(--charcoal)",
+                  }}
+                />
+                <button
+                  type="submit"
+                  disabled={status === "submitting"}
+                  className="w-full h-12 rounded-xl font-bold text-sm tracking-[0.15em] uppercase flex items-center justify-center gap-2 transition-transform hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{
+                    background: "var(--navy)",
+                    color: "white",
+                    boxShadow: "0 12px 28px -12px rgba(15,23,55,0.6)",
+                  }}
+                >
+                  <Download className="h-4 w-4" />
+                  {status === "submitting" ? "Submitting..." : "Subscribe & Download Free"}
+                </button>
+              </form>
+            </>
           )}
 
           <p
