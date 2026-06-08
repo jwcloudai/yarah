@@ -60,7 +60,7 @@ export function ContactForm() {
         >
           <JotFormEmbed 
             title="Yarah Life Contact Form"
-            height="700px"
+            height="539px"
           />
         </div>
 
