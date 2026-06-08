@@ -1,41 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface JotFormEmbedProps {
   formId?: string;
-  title?: string;
-  height?: string;
   className?: string;
 }
 
 export function JotFormEmbed({ 
   formId = import.meta.env.VITE_JOTFORM_FORM_ID,
-  title = "Form",
-  height = "539px",
   className = ""
 }: JotFormEmbedProps) {
-  
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Load JotForm embed handler script
+    if (!formId) return;
+
+    // Create script element
     const script = document.createElement("script");
-    script.src = "https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js";
+    script.type = "text/javascript";
+    script.src = `https://form.jotform.com/jsform/${formId}`;
     script.async = true;
-    
-    script.onload = () => {
-      // Initialize the embed handler after script loads
-      if (window.jotformEmbedHandler && formId) {
-        window.jotformEmbedHandler(
-          `iframe[id='JotFormIFrame-${formId}']`,
-          "https://form.jotform.com/"
-        );
-      }
-    };
-    
-    document.body.appendChild(script);
+
+    // Append script to the container
+    if (containerRef.current) {
+      containerRef.current.appendChild(script);
+    }
 
     return () => {
-      // Cleanup script on unmount
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
+      // Cleanup: remove the script and any form elements
+      if (containerRef.current) {
+        containerRef.current.innerHTML = "";
       }
     };
   }, [formId]);
@@ -49,30 +42,10 @@ export function JotFormEmbed({
   }
 
   return (
-    <div className={className}>
-      <iframe
-        id={`JotFormIFrame-${formId}`}
-        title={title}
-        onLoad={() => window.parent.scrollTo(0, 0)}
-        allowTransparency={true}
-        allow="geolocation; microphone; camera; fullscreen; payment"
-        src={`https://form.jotform.com/${formId}`}
-        frameBorder="0"
-        style={{
-          minWidth: "100%",
-          maxWidth: "100%",
-          height,
-          border: "none",
-        }}
-        scrolling="no"
-      />
-    </div>
+    <div 
+      ref={containerRef} 
+      className={className}
+      id={`jotform-container-${formId}`}
+    />
   );
-}
-
-// Type declaration for the JotForm embed handler
-declare global {
-  interface Window {
-    jotformEmbedHandler: (selector: string, baseUrl: string) => void;
-  }
 }

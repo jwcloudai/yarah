@@ -31,7 +31,9 @@ VITE_JOTFORM_FORM_ID=your_form_id_here
 
 ### Embedding a Form
 
-#### Option 1: Use the ContactForm Component
+The component uses JotForm's JavaScript embed code which renders the form directly on the page (not in an iframe).
+
+#### Option 1: Use the ContactForm Component (Recommended)
 
 ```tsx
 import { ContactForm } from "@/components/ContactForm";
@@ -54,13 +56,25 @@ export function MyForm() {
   return (
     <JotFormEmbed 
       formId="261582875886073"  // Optional, uses env var by default
-      title="My Custom Form"
-      height="800px"
       className="my-custom-class"
     />
   );
 }
 ```
+
+### Embed Method
+
+The component uses the **JavaScript embed** method:
+```html
+<script type="text/javascript" src="https://form.jotform.com/jsform/{formId}"></script>
+```
+
+**Benefits:**
+- Native look and feel (not an iframe)
+- Fully responsive
+- Better integration with your site's styles
+- Automatic height adjustment
+- No scrolling issues
 
 ### Using the API
 
@@ -147,8 +161,8 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 function ContactModal({ open, onClose }) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl">
-        <JotFormEmbed height="600px" />
+      <DialogContent className="max-w-2xl max-h-[80vh] overflow-auto">
+        <JotFormEmbed />
       </DialogContent>
     </Dialog>
   );
@@ -160,8 +174,8 @@ function ContactModal({ open, onClose }) {
 You can use multiple forms by passing different form IDs:
 
 ```tsx
-<JotFormEmbed formId="261582875886073" title="Contact Form" />
-<JotFormEmbed formId="another_form_id" title="Support Form" />
+<JotFormEmbed formId="261582875886073" />
+<JotFormEmbed formId="another_form_id" />
 ```
 
 ## Styling

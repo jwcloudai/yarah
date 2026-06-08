@@ -52,16 +52,13 @@ export function ContactForm() {
 
         {/* JotForm embed */}
         <div
-          className="rounded-2xl overflow-hidden shadow-lg"
+          className="rounded-2xl overflow-hidden shadow-lg p-6 md:p-8"
           style={{
             background: "white",
             border: "1px solid color-mix(in oklab, var(--navy) 10%, transparent)",
           }}
         >
-          <JotFormEmbed 
-            title="Yarah Life Contact Form"
-            height="539px"
-          />
+          <JotFormEmbed />
         </div>
 
         {/* Alternative contact info */}
