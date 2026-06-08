@@ -11,7 +11,6 @@ import { EternityInvestment } from "@/components/EternityInvestment";
 import { CommissioningCurriculum } from "@/components/CommissioningCurriculum";
 import { FreeDownload } from "@/components/FreeDownload";
 import { FundingPhases } from "@/components/FundingPhases";
-import { CustomContactForm } from "@/components/CustomContactForm";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -33,7 +32,6 @@ function Index() {
       <CommissioningCurriculum />
       <FreeDownload />
       <FundingPhases />
-      <CustomContactForm />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
         <h2
