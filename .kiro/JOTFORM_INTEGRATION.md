@@ -78,6 +78,42 @@ The component uses the **JavaScript embed** method:
 
 ### Using the API
 
+#### Submit Form Programmatically
+
+```tsx
+import { submitForm } from "@/lib/jotform";
+
+const handleSubmit = async () => {
+  try {
+    const result = await submitForm({
+      q3_name: "John Doe",
+      q4_email: "john@example.com",
+      q5_message: "Hello from the website!",
+    });
+    
+    console.log("Submitted:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+```
+
+**Note:** Field IDs (like `q3_name`, `q4_email`) are specific to your form. Find them in JotForm form builder.
+
+#### Use the Custom Contact Form Component
+
+For a fully custom form that submits via API:
+
+```tsx
+import { CustomContactForm } from "@/components/CustomContactForm";
+
+<CustomContactForm />
+```
+
+This gives you full control over styling and validation while using the JotForm API backend.
+
+#### Fetch Submissions
+
 Fetch form submissions:
 
 ```tsx
@@ -132,6 +168,7 @@ Full JotForm API docs: https://api.jotform.com/docs/
 
 ### Available API Functions
 
+- `submitForm(formData, formId?)` - Submit form data to JotForm API
 - `getForm(formId)` - Get form details
 - `getFormSubmissions(formId, options)` - Get form submissions with filtering
 - `getSubmission(submissionId)` - Get a specific submission
@@ -140,7 +177,36 @@ Full JotForm API docs: https://api.jotform.com/docs/
 
 ## Common Use Cases
 
-### 1. Display Form on Contact Page
+### 1. Display Embedded JotForm (Easiest)
+
+Use JotForm's native embed - best for quick setup:
+
+```tsx
+import { ContactForm } from "@/components/ContactForm";
+
+export default function Contact() {
+  return <ContactForm />;
+}
+```
+
+### 2. Custom Form with API Submission
+
+Full control over design, use JotForm as backend:
+
+```tsx
+import { CustomContactForm } from "@/components/CustomContactForm";
+
+export default function Contact() {
+  return <CustomContactForm />;
+}
+```
+
+**Important:** Update field IDs in `CustomContactForm.tsx` to match your form:
+- Go to JotForm form builder
+- Click on each field to see its ID (e.g., `q3`, `q4`, `q5`)
+- Update the `submitForm()` call with correct field names
+
+### 3. Display Form on Contact Page
 
 Add to your routes:
 
@@ -152,7 +218,7 @@ export default function Contact() {
 }
 ```
 
-### 2. Embed in a Modal/Dialog
+### 4. Embed in a Modal/Dialog
 
 ```tsx
 import { JotFormEmbed } from "@/components/JotFormEmbed";
@@ -169,7 +235,7 @@ function ContactModal({ open, onClose }) {
 }
 ```
 
-### 3. Multiple Forms
+### 5. Multiple Forms
 
 You can use multiple forms by passing different form IDs:
 

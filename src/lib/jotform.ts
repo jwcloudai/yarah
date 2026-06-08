@@ -4,6 +4,7 @@
  */
 
 const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY;
+const FORM_ID = import.meta.env.VITE_JOTFORM_FORM_ID;
 const BASE_URL = "https://api.jotform.com";
 
 interface JotFormSubmission {
@@ -25,6 +26,52 @@ interface JotFormResponse<T> {
   content: T;
   duration: string;
   info: string;
+}
+
+interface SubmitFormData {
+  [key: string]: string | number | boolean;
+}
+
+/**
+ * Submit form data to JotForm API
+ * @param formData Object with field IDs as keys (e.g., { q3_name: "John", q4_email: "john@example.com" })
+ * @param formId Optional form ID (defaults to env variable)
+ */
+export async function submitForm(
+  formData: SubmitFormData,
+  formId: string = FORM_ID
+) {
+  if (!API_KEY) {
+    throw new Error("VITE_JOTFORM_API_KEY is not set");
+  }
+
+  if (!formId) {
+    throw new Error("Form ID is required");
+  }
+
+  const data = new URLSearchParams();
+  
+  // Append all form fields
+  Object.entries(formData).forEach(([key, value]) => {
+    data.append(key, String(value));
+  });
+
+  const response = await fetch(
+    `${BASE_URL}/form/${formId}/submissions?apiKey=${API_KEY}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: data,
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to submit form: ${response.statusText}`);
+  }
+
+  return response.json() as Promise<JotFormResponse<JotFormSubmission>>;
 }
 
 /**
