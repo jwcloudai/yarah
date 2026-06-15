@@ -118,48 +118,16 @@ export function HeroSlider() {
           />
         ))}
 
-        {/* White diagonal accent — desktop only */}
+        {/* Simple gradient overlay for text readability */}
         <div
-          className="hidden md:block absolute top-0 right-0 h-full w-[28%]"
-          style={{
-            background: "var(--canvas)",
-            clipPath: "polygon(35% 0, 100% 0, 100% 100%, 0 100%)",
-            opacity: 0.92,
-          }}
-        />
-
-        {/* Mobile: cinematic bottom-up navy gradient */}
-        <div
-          className="absolute inset-0 md:hidden"
+          className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(10,31,77,0.30) 0%, rgba(10,31,77,0.55) 35%, rgba(10,31,77,0.92) 70%, rgba(10,31,77,0.98) 100%)",
-          }}
-        />
-
-        {/* Mobile: gold radial glow accent */}
-        <div
-          className="absolute md:hidden -top-24 -right-20 h-64 w-64 rounded-full blur-3xl pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(253,184,19,0.35), transparent 70%)" }}
-        />
-        <div
-          className="absolute md:hidden -bottom-28 -left-20 h-72 w-72 rounded-full blur-3xl pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(220,20,60,0.30), transparent 70%)" }}
-        />
-
-        {/* Desktop overlay */}
-        <div
-          className="absolute inset-0 hidden md:block"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(10,31,77,0.96) 0%, rgba(10,31,77,0.88) 40%, rgba(10,31,77,0) 60%)",
+              "linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%)",
           }}
         />
 
         <style>{`
-          @media (min-width: 768px) {
-            .hero-image { clip-path: polygon(45% 0, 100% 0, 100% 100%, 30% 100%); }
-          }
           @keyframes heroZoom {
             from { transform: scale(1); }
             to   { transform: scale(1.08); }
