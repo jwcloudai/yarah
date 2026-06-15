@@ -70,7 +70,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="#support"
+                  href="/support"
                   className="text-sm hover:underline transition-colors"
                   style={{ color: "color-mix(in oklab, var(--canvas) 65%, transparent)" }}
                 >
