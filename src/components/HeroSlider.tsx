@@ -169,17 +169,6 @@ export function HeroSlider() {
 
           {/* Text content — re-mounts with animation on slide change */}
           <div key={i} className="hero-text-enter">
-            <div
-              className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 py-1.5 rounded-full text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase font-semibold"
-              style={{
-                color: "var(--gold)",
-                background: "color-mix(in oklab, var(--gold) 12%, transparent)",
-                border: "1px solid color-mix(in oklab, var(--gold) 35%, transparent)",
-              }}
-            >
-              <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: "var(--gold)" }} />
-              Heritage Academy · Class of 2026
-            </div>
             <h1 className="font-display text-[2.15rem] leading-[1.05] sm:text-5xl md:text-7xl font-bold sm:leading-[1.1] md:leading-[1.05] tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
               {s.pre} <span style={{ color: "var(--crimson)" }}>{s.accent1}</span> {s.mid}
               <br />
