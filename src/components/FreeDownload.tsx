@@ -30,26 +30,50 @@ export function FreeDownload() {
     setErrorMessage("");
 
     try {
-      // Create form data matching JotForm's expected format
-      const formSubmitData = new FormData();
-      formSubmitData.append("q3_name[first]", name.split(" ")[0] || name);
-      formSubmitData.append("q3_name[last]", name.split(" ").slice(1).join(" ") || "");
-      formSubmitData.append("q4_email", email);
+      // Submit to BOTH JotForm and MailerLite in parallel
+      const [jotformResponse, mailerliteResponse] = await Promise.all([
+        // JotForm submission
+        fetch(
+          `https://submit.jotform.com/submit/${import.meta.env.VITE_JOTFORM_FORM_ID}`,
+          {
+            method: "POST",
+            body: (() => {
+              const formData = new FormData();
+              formData.append("q3_name[first]", name.split(" ")[0] || name);
+              formData.append("q3_name[last]", name.split(" ").slice(1).join(" ") || "");
+              formData.append("q4_email", email);
+              return formData;
+            })(),
+          }
+        ),
+        
+        // MailerLite submission
+        fetch(
+          "https://assets.mailerlite.com/jsonp/2445166/forms/190320808650868265/subscribe",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({
+              "fields[email]": email,
+              "fields[name]": name,
+              "ml-submit": "1",
+              "anticsrf": "true",
+            }).toString(),
+          }
+        ),
+      ]);
 
-      // Submit directly to JotForm's submit endpoint
-      const response = await fetch(
-        `https://submit.jotform.com/submit/${import.meta.env.VITE_JOTFORM_FORM_ID}`,
-        {
-          method: "POST",
-          body: formSubmitData,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to submit form");
+      // Check if both submissions were successful
+      if (!jotformResponse.ok) {
+        throw new Error("Failed to submit to JotForm");
+      }
+      if (!mailerliteResponse.ok) {
+        throw new Error("Failed to submit to MailerLite");
       }
 
-      console.log("Form submitted successfully to JotForm");
+      console.log("Form submitted successfully to both JotForm and MailerLite");
       setStatus("success");
       
       // Reset form
