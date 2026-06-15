@@ -1,14 +1,16 @@
 import { Facebook, Linkedin, Twitter, Instagram } from "lucide-react";
 
 export function SupportHero() {
-  // Calculate progress
-  const currentAmount = 34000;
+  // Get values from environment variables (update .env.local when you check Stripe)
+  const currentAmount = Number(import.meta.env.VITE_FUNDRAISING_CURRENT_AMOUNT) || 34000;
+  const totalSupporters = Number(import.meta.env.VITE_FUNDRAISING_TOTAL_SUPPORTERS) || 412;
+  const daysRemaining = Number(import.meta.env.VITE_FUNDRAISING_DAYS_REMAINING) || 47;
+  
+  // Milestone targets (these stay fixed)
   const milestoneTarget = 100000;
   const phaseFullTarget = 1000000;
   const fullVisionTarget = 15000000;
   const percentOfMilestone = Math.round((currentAmount / milestoneTarget) * 100);
-  const daysRemaining = 47;
-  const totalSupporters = 412;
   const givingTiers = 5;
 
   return (

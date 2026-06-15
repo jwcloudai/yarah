@@ -3,11 +3,11 @@ import { Mail, Clock, Search, Facebook, Instagram, Linkedin, ShoppingBag, Menu, 
 import logoAsset from "@/assets/logo.png";
 
 const links = [
-  { label: "Why YARAH LIFE?", href: "#" },
-  { label: "Kingdom Curriculum", href: "#" },
-  { label: "Our Core Beliefs", href: "#" },
-  { label: "Support Us", href: "#" },
-  { label: "Contact Us", href: "#" },
+  { label: "Why YARAH LIFE?", href: "/" },
+  { label: "Kingdom Curriculum", href: "/" },
+  { label: "Our Core Beliefs", href: "/" },
+  { label: "Support Us", href: "/support" },
+  { label: "Contact Us", href: "/" },
 ];
 
 export function SiteNav() {
@@ -60,7 +60,7 @@ export function SiteNav() {
       <div className="flex items-center justify-between px-6 sm:px-8 h-[80px] sm:h-[88px]">
 
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 sm:gap-4 shrink-0">
+        <a href="/" className="flex items-center gap-3 sm:gap-4 shrink-0">
           <img
             src={logoAsset}
             alt="Yarah Life"
@@ -116,7 +116,8 @@ export function SiteNav() {
           >
             <ShoppingBag className="h-4.5 w-4.5" />
           </button>
-          <button
+          <a
+            href="/support"
             className="hidden sm:inline-flex items-center px-6 h-11 rounded-full font-semibold text-sm tracking-wide ml-2 transition-transform hover:scale-[1.03]"
             style={{
               background: "var(--gold)",
@@ -125,7 +126,7 @@ export function SiteNav() {
             }}
           >
             Support Us
-          </button>
+          </a>
           {/* Mobile hamburger */}
           <button
             aria-label="Toggle menu"
@@ -160,12 +161,13 @@ export function SiteNav() {
                 {l.label}
               </a>
             ))}
-            <button
+            <a
+              href="/support"
               className="mt-3 inline-flex items-center justify-center px-6 h-12 rounded-full font-semibold text-sm tracking-wide"
               style={{ background: "var(--gold)", color: "var(--charcoal)" }}
             >
               Support Us
-            </button>
+            </a>
           </nav>
         </div>
       )}
