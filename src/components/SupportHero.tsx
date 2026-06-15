@@ -274,7 +274,10 @@ export function SupportHero() {
 
         {/* Action buttons */}
         <div className="flex flex-wrap justify-center items-center gap-4 mb-12">
-          <button
+          <a
+            href="https://buy.stripe.com/test_28E9AUaMrcfKcG6fgEdIA01"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-4 rounded-full font-bold text-sm tracking-[0.15em] uppercase transition-transform hover:scale-[1.04] flex items-center gap-2"
             style={{
               background: "linear-gradient(135deg, var(--gold) 0%, #ffd35c 100%)",
@@ -283,7 +286,7 @@ export function SupportHero() {
             }}
           >
             <span>✦</span> Give Now
-          </button>
+          </a>
           <button
             className="px-8 py-4 rounded-full font-bold text-sm tracking-[0.15em] uppercase transition-colors border-2"
             style={{
