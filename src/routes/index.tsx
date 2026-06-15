@@ -11,6 +11,7 @@ import { EternityInvestment } from "@/components/EternityInvestment";
 import { CommissioningCurriculum } from "@/components/CommissioningCurriculum";
 import { FreeDownload } from "@/components/FreeDownload";
 import { FundingPhases } from "@/components/FundingPhases";
+import { Footer } from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -74,6 +75,7 @@ function Index() {
           </button>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
