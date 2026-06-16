@@ -30,50 +30,37 @@ export function FreeDownload() {
     setErrorMessage("");
 
     try {
-      // Submit to BOTH JotForm and MailerLite in parallel
-      const [jotformResponse, mailerliteResponse] = await Promise.all([
-        // JotForm submission
-        fetch(
-          `https://submit.jotform.com/submit/${import.meta.env.VITE_JOTFORM_FORM_ID}`,
-          {
-            method: "POST",
-            body: (() => {
-              const formData = new FormData();
-              formData.append("q3_name[first]", name.split(" ")[0] || name);
-              formData.append("q3_name[last]", name.split(" ").slice(1).join(" ") || "");
-              formData.append("q4_email", email);
-              return formData;
-            })(),
-          }
-        ),
-        
-        // MailerLite submission
-        fetch(
-          "https://assets.mailerlite.com/jsonp/2445166/forms/190320808650868265/subscribe",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: new URLSearchParams({
-              "fields[email]": email,
-              "fields[name]": name,
-              "ml-submit": "1",
-              "anticsrf": "true",
-            }).toString(),
-          }
-        ),
-      ]);
+      // Submit to MailerLite only
+      const mailerliteResponse = await fetch(
+        "https://assets.mailerlite.com/jsonp/2445166/forms/190320808650868265/subscribe",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            "fields[email]": email,
+            "fields[name]": name,
+            "ml-submit": "1",
+            "anticsrf": "true",
+          }).toString(),
+        }
+      );
 
-      // Check if both submissions were successful
-      if (!jotformResponse.ok) {
-        throw new Error("Failed to submit to JotForm");
-      }
       if (!mailerliteResponse.ok) {
         throw new Error("Failed to submit to MailerLite");
       }
 
-      console.log("Form submitted successfully to both JotForm and MailerLite");
+      console.log("Subscribed successfully to MailerLite");
+      
+      // Trigger PDF download
+      const link = document.createElement('a');
+      link.href = '/path-to-your-pdf.pdf'; // Update this with your actual PDF path
+      link.download = 'The-New-Era-of-Sons-of-Light.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
       setStatus("success");
       
       // Reset form
@@ -218,8 +205,7 @@ export function FreeDownload() {
                 color: "var(--navy)",
               }}
             >
-              <strong>Thank you!</strong> Check your inbox for the free
-              prophetic document.
+              <strong>Thank you!</strong> Your download should start automatically. Check your inbox for weekly updates.
             </div>
           ) : (
             <>
