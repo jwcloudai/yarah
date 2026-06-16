@@ -1,8 +1,9 @@
-import { useState, type FormEvent } from "react";
+import { useState, useRef, type FormEvent } from "react";
 
 export function JotFormContactEmbed() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,7 +24,9 @@ export function JotFormContactEmbed() {
 
       setStatus("success");
       // Reset form
-      e.currentTarget.reset();
+      if (formRef.current) {
+        formRef.current.reset();
+      }
     } catch (error) {
       console.error("Form submission error:", error);
       setStatus("error");
@@ -150,6 +153,7 @@ export function JotFormContactEmbed() {
       }} />
       
       <form
+        ref={formRef}
         className="jotform-form"
         action="https://submit.jotform.com/submit/261582875886073"
         method="post"
