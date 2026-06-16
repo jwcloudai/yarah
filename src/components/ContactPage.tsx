@@ -78,165 +78,9 @@ export function ContactPage() {
       className="py-12 md:py-20"
       style={{ background: "linear-gradient(to bottom, var(--canvas), color-mix(in oklab, var(--navy) 3%, var(--canvas)))" }}
     >
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid md:grid-cols-[380px,1fr] lg:grid-cols-[420px,1fr] gap-8 md:gap-10 lg:gap-16">
-          {/* Left sidebar - Contact Details */}
-          <div
-            className="rounded-3xl p-10"
-            style={{
-              background: "var(--navy)",
-              color: "var(--canvas)",
-              boxShadow: "0 10px 40px -15px rgba(0,0,0,0.3)",
-            }}
-          >
-            {/* Header */}
-            <div className="mb-10 pb-8 border-b" style={{ borderColor: "color-mix(in oklab, var(--canvas) 15%, transparent)" }}>
-              <div
-                className="inline-block px-3 py-1 rounded-full text-[10px] tracking-[0.3em] uppercase font-bold mb-4"
-                style={{
-                  background: "color-mix(in oklab, var(--gold) 15%, transparent)",
-                  color: "var(--gold)",
-                }}
-              >
-                Contact Details
-              </div>
-              <h2 className="font-display text-2xl md:text-3xl font-bold mb-2">
-                The Joseph Ministries
-              </h2>
-              <p
-                className="text-base italic"
-                style={{ color: "var(--gold)" }}
-              >
-                Yarah Life · יָרַד
-              </p>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-8 mb-10">
-              <div className="flex gap-4">
-                <div
-                  className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0"
-                  style={{
-                    background: "color-mix(in oklab, var(--gold) 15%, transparent)",
-                  }}
-                >
-                  <MapPin className="h-5 w-5" style={{ color: "var(--gold)" }} />
-                </div>
-                <div>
-                  <div
-                    className="text-[10px] tracking-[0.25em] uppercase font-bold mb-2"
-                    style={{ color: "color-mix(in oklab, var(--canvas) 50%, transparent)" }}
-                  >
-                    Address
-                  </div>
-                  <div className="text-base leading-relaxed">
-                    18 Agapanthus Avenue
-                    <br />
-                    Kellyville, NSW
-                    <br />
-                    Sydney, Australia
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div
-                  className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0"
-                  style={{
-                    background: "color-mix(in oklab, var(--gold) 15%, transparent)",
-                  }}
-                >
-                  <Phone className="h-5 w-5" style={{ color: "var(--gold)" }} />
-                </div>
-                <div>
-                  <div
-                    className="text-[10px] tracking-[0.25em] uppercase font-bold mb-2"
-                    style={{ color: "color-mix(in oklab, var(--canvas) 50%, transparent)" }}
-                  >
-                    WhatsApp Only
-                  </div>
-                  <div className="text-base font-semibold mb-1">+61 404 767 488</div>
-                  <div
-                    className="text-xs"
-                    style={{ color: "color-mix(in oklab, var(--canvas) 60%, transparent)" }}
-                  >
-                    Texts only — no voice calls
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div
-                  className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0"
-                  style={{
-                    background: "color-mix(in oklab, var(--gold) 15%, transparent)",
-                  }}
-                >
-                  <Mail className="h-5 w-5" style={{ color: "var(--gold)" }} />
-                </div>
-                <div>
-                  <div
-                    className="text-[10px] tracking-[0.25em] uppercase font-bold mb-2"
-                    style={{ color: "color-mix(in oklab, var(--canvas) 50%, transparent)" }}
-                  >
-                    Email
-                  </div>
-                  <a
-                    href="mailto:info@yarahlife.com"
-                    className="text-base hover:underline transition-colors"
-                    style={{ color: "var(--gold)" }}
-                  >
-                    info@yarahlife.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div
-                  className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0"
-                  style={{
-                    background: "color-mix(in oklab, var(--gold) 15%, transparent)",
-                  }}
-                >
-                  <Clock className="h-5 w-5" style={{ color: "var(--gold)" }} />
-                </div>
-                <div>
-                  <div
-                    className="text-[10px] tracking-[0.25em] uppercase font-bold mb-2"
-                    style={{ color: "color-mix(in oklab, var(--canvas) 50%, transparent)" }}
-                  >
-                    Response Time
-                  </div>
-                  <div className="text-base leading-relaxed">
-                    2–3 business days
-                    <br />
-                    <span className="text-sm" style={{ color: "color-mix(in oklab, var(--canvas) 65%, transparent)" }}>
-                      Prayer requests prayed over personally
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Scripture quote */}
-            <div
-              className="pt-8 border-t text-sm italic leading-relaxed"
-              style={{
-                borderColor: "color-mix(in oklab, var(--canvas) 15%, transparent)",
-                color: "color-mix(in oklab, var(--canvas) 70%, transparent)",
-              }}
-            >
-              <span style={{ color: "var(--gold)" }}>"</span>The people who know their God shall be strong and carry out great exploits.<span style={{ color: "var(--gold)" }}>"</span>
-              <div className="text-xs mt-2" style={{ color: "color-mix(in oklab, var(--canvas) 55%, transparent)" }}>
-                — Daniel 11:32
-              </div>
-            </div>
-          </div>
-
-          {/* Right side - Form */}
-          <div>
-            {/* Form header */}
-            <div className="text-center mb-12">
+      <div className="mx-auto max-w-4xl px-6">
+        {/* Form header */}
+        <div className="text-center mb-12">
               <div
                 className="inline-block px-3 py-1 rounded-full text-[10px] tracking-[0.3em] uppercase font-bold mb-4"
                 style={{
@@ -633,43 +477,167 @@ export function ContactPage() {
               )}
             </div>
 
-            {/* Bottom contact card */}
+            {/* Bottom contact card - Enhanced with detailed info */}
             <div
-              className="mt-8 rounded-2xl p-6 text-center"
+              className="mt-10 rounded-3xl p-8 md:p-10"
               style={{
                 background: "var(--navy)",
                 color: "var(--canvas)",
+                boxShadow: "0 10px 40px -15px rgba(0,0,0,0.3)",
               }}
             >
               <div
-                className="text-xs tracking-[0.25em] uppercase font-semibold mb-2"
-                style={{ color: "var(--gold)" }}
+                className="text-center mb-8 pb-6 border-b"
+                style={{ borderColor: "color-mix(in oklab, var(--canvas) 15%, transparent)" }}
               >
-                Find Us
-              </div>
-              <div className="font-bold text-lg mb-2">The Joseph Ministries</div>
-              <div className="text-sm mb-4">
-                18 Agapanthus Avenue · Kellyville NSW · Sydney, Australia
-              </div>
-              <div className="flex justify-center items-center gap-4 text-sm">
-                <a
-                  href="tel:+61404767488"
-                  className="px-4 py-2 rounded-full border hover:bg-white/5 transition-colors"
-                  style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
+                <div
+                  className="inline-block px-3 py-1 rounded-full text-[10px] tracking-[0.3em] uppercase font-bold mb-4"
+                  style={{
+                    background: "color-mix(in oklab, var(--gold) 15%, transparent)",
+                    color: "var(--gold)",
+                  }}
                 >
-                  +61 404 767 488
-                </a>
-                <a
-                  href="mailto:info@yarahlife.com"
-                  className="px-4 py-2 rounded-full border hover:bg-white/5 transition-colors"
-                  style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
-                >
-                  info@yarahlife.com
-                </a>
+                  Find Us
+                </div>
+                <div className="font-display text-2xl md:text-3xl font-bold mb-2">
+                  The Joseph Ministries
+                </div>
+                <div className="text-base italic" style={{ color: "var(--gold)" }}>
+                  Yarah Life · יָרַד
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                {/* Address */}
+                <div className="flex gap-4">
+                  <div
+                    className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{
+                      background: "color-mix(in oklab, var(--gold) 15%, transparent)",
+                    }}
+                  >
+                    <MapPin className="h-5 w-5" style={{ color: "var(--gold)" }} />
+                  </div>
+                  <div>
+                    <div
+                      className="text-[10px] tracking-[0.25em] uppercase font-bold mb-2"
+                      style={{ color: "color-mix(in oklab, var(--canvas) 50%, transparent)" }}
+                    >
+                      Address
+                    </div>
+                    <div className="text-base leading-relaxed">
+                      18 Agapanthus Avenue
+                      <br />
+                      Kellyville, NSW
+                      <br />
+                      Sydney, Australia
+                    </div>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="flex gap-4">
+                  <div
+                    className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{
+                      background: "color-mix(in oklab, var(--gold) 15%, transparent)",
+                    }}
+                  >
+                    <Phone className="h-5 w-5" style={{ color: "var(--gold)" }} />
+                  </div>
+                  <div>
+                    <div
+                      className="text-[10px] tracking-[0.25em] uppercase font-bold mb-2"
+                      style={{ color: "color-mix(in oklab, var(--canvas) 50%, transparent)" }}
+                    >
+                      WhatsApp Only
+                    </div>
+                    <a
+                      href="tel:+61404767488"
+                      className="text-base font-semibold hover:underline block mb-1"
+                      style={{ color: "var(--gold)" }}
+                    >
+                      +61 404 767 488
+                    </a>
+                    <div
+                      className="text-xs"
+                      style={{ color: "color-mix(in oklab, var(--canvas) 60%, transparent)" }}
+                    >
+                      Texts only — no voice calls
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex gap-4">
+                  <div
+                    className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{
+                      background: "color-mix(in oklab, var(--gold) 15%, transparent)",
+                    }}
+                  >
+                    <Mail className="h-5 w-5" style={{ color: "var(--gold)" }} />
+                  </div>
+                  <div>
+                    <div
+                      className="text-[10px] tracking-[0.25em] uppercase font-bold mb-2"
+                      style={{ color: "color-mix(in oklab, var(--canvas) 50%, transparent)" }}
+                    >
+                      Email
+                    </div>
+                    <a
+                      href="mailto:info@yarahlife.com"
+                      className="text-base hover:underline transition-colors"
+                      style={{ color: "var(--gold)" }}
+                    >
+                      info@yarahlife.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* Response Time */}
+                <div className="flex gap-4">
+                  <div
+                    className="h-12 w-12 rounded-xl flex items-center justify-center shrink-0"
+                    style={{
+                      background: "color-mix(in oklab, var(--gold) 15%, transparent)",
+                    }}
+                  >
+                    <Clock className="h-5 w-5" style={{ color: "var(--gold)" }} />
+                  </div>
+                  <div>
+                    <div
+                      className="text-[10px] tracking-[0.25em] uppercase font-bold mb-2"
+                      style={{ color: "color-mix(in oklab, var(--canvas) 50%, transparent)" }}
+                    >
+                      Response Time
+                    </div>
+                    <div className="text-base leading-relaxed">
+                      2–3 business days
+                      <br />
+                      <span className="text-sm" style={{ color: "color-mix(in oklab, var(--canvas) 65%, transparent)" }}>
+                        Prayer requests prayed over personally
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Scripture quote */}
+              <div
+                className="pt-6 border-t text-center text-sm italic leading-relaxed"
+                style={{
+                  borderColor: "color-mix(in oklab, var(--canvas) 15%, transparent)",
+                  color: "color-mix(in oklab, var(--canvas) 70%, transparent)",
+                }}
+              >
+                <span style={{ color: "var(--gold)" }}>"</span>The people who know their God shall be strong and carry out great exploits.<span style={{ color: "var(--gold)" }}>"</span>
+                <div className="text-xs mt-2" style={{ color: "color-mix(in oklab, var(--canvas) 55%, transparent)" }}>
+                  — Daniel 11:32
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );
