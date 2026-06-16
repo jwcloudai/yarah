@@ -79,7 +79,7 @@ export function ContactPage() {
       style={{ background: "linear-gradient(to bottom, var(--canvas), color-mix(in oklab, var(--navy) 3%, var(--canvas)))" }}
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid lg:grid-cols-[400px,1fr] gap-10 lg:gap-16">
+        <div className="grid md:grid-cols-[380px,1fr] lg:grid-cols-[420px,1fr] gap-8 md:gap-10 lg:gap-16">
           {/* Left sidebar - Contact Details */}
           <div
             className="rounded-3xl p-10"
