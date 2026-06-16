@@ -7,7 +7,7 @@ const links = [
   { label: "Kingdom Curriculum", href: "/" },
   { label: "Our Core Beliefs", href: "/" },
   { label: "Support Us", href: "/support" },
-  { label: "Contact Us", href: "/" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export function SiteNav() {

@@ -1,0 +1,655 @@
+import { useState, type FormEvent } from "react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+
+type EnquiryType = "General" | "Course Enquiry" | "Support & Giving" | "Partnership";
+
+export function ContactPage() {
+  const [formData, setFormData] = useState({
+    enquiryType: "General" as EnquiryType,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    street: "",
+    city: "",
+    state: "",
+    country: "",
+    message: "",
+    hearAbout: "",
+  });
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      // Submit to JotForm
+      const jotformData = new FormData();
+      jotformData.append("q3_name[first]", formData.firstName);
+      jotformData.append("q3_name[last]", formData.lastName);
+      jotformData.append("q4_email", formData.email);
+      // Add more fields as needed based on your JotForm setup
+
+      const response = await fetch(
+        `https://submit.jotform.com/submit/${import.meta.env.VITE_JOTFORM_FORM_ID}`,
+        {
+          method: "POST",
+          body: jotformData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setStatus("success");
+      setFormData({
+        enquiryType: "General",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        street: "",
+        city: "",
+        state: "",
+        country: "",
+        message: "",
+        hearAbout: "",
+      });
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to submit form");
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  return (
+    <section
+      className="py-20 md:py-28"
+      style={{ background: "var(--canvas)" }}
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid lg:grid-cols-[380px,1fr] gap-8 lg:gap-12">
+          {/* Left sidebar - Contact Details */}
+          <div
+            className="rounded-2xl p-8"
+            style={{
+              background: "var(--navy)",
+              color: "var(--canvas)",
+            }}
+          >
+            {/* Header */}
+            <div className="mb-8">
+              <div
+                className="text-xs tracking-[0.25em] uppercase font-semibold mb-3"
+                style={{ color: "color-mix(in oklab, var(--gold) 80%, transparent)" }}
+              >
+                • Contact Details •
+              </div>
+              <h2 className="font-display text-2xl font-bold mb-2">
+                The Joseph Ministries
+              </h2>
+              <p
+                className="text-sm italic"
+                style={{ color: "var(--gold)" }}
+              >
+                Yarah Life · יָרַד
+              </p>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-6 mb-8">
+              <div className="flex gap-3">
+                <MapPin
+                  className="h-5 w-5 shrink-0 mt-0.5"
+                  style={{ color: "var(--gold)" }}
+                />
+                <div>
+                  <div
+                    className="text-xs tracking-[0.2em] uppercase font-semibold mb-1"
+                    style={{ color: "color-mix(in oklab, var(--canvas) 60%, transparent)" }}
+                  >
+                    Address
+                  </div>
+                  <div className="text-sm leading-relaxed">
+                    18 Agapanthus Avenue
+                    <br />
+                    Kellyville, NSW
+                    <br />
+                    Sydney, Australia
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <Phone
+                  className="h-5 w-5 shrink-0 mt-0.5"
+                  style={{ color: "var(--gold)" }}
+                />
+                <div>
+                  <div
+                    className="text-xs tracking-[0.2em] uppercase font-semibold mb-1"
+                    style={{ color: "color-mix(in oklab, var(--canvas) 60%, transparent)" }}
+                  >
+                    WhatsApp Only
+                  </div>
+                  <div className="text-sm font-semibold">+61 404 767 488</div>
+                  <div
+                    className="text-xs mt-0.5"
+                    style={{ color: "color-mix(in oklab, var(--canvas) 65%, transparent)" }}
+                  >
+                    Texts only — no voice calls
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <Mail
+                  className="h-5 w-5 shrink-0 mt-0.5"
+                  style={{ color: "var(--gold)" }}
+                />
+                <div>
+                  <div
+                    className="text-xs tracking-[0.2em] uppercase font-semibold mb-1"
+                    style={{ color: "color-mix(in oklab, var(--canvas) 60%, transparent)" }}
+                  >
+                    Email
+                  </div>
+                  <a
+                    href="mailto:info@yarahlife.com"
+                    className="text-sm hover:underline"
+                    style={{ color: "var(--gold)" }}
+                  >
+                    info@yarahlife.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <Clock
+                  className="h-5 w-5 shrink-0 mt-0.5"
+                  style={{ color: "var(--gold)" }}
+                />
+                <div>
+                  <div
+                    className="text-xs tracking-[0.2em] uppercase font-semibold mb-1"
+                    style={{ color: "color-mix(in oklab, var(--canvas) 60%, transparent)" }}
+                  >
+                    Response Time
+                  </div>
+                  <div className="text-sm leading-relaxed">
+                    2–3 business days. Prayer requests prayed over personally.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Scripture quote */}
+            <div
+              className="pt-6 border-t text-xs italic leading-relaxed"
+              style={{
+                borderColor: "color-mix(in oklab, var(--canvas) 15%, transparent)",
+                color: "color-mix(in oklab, var(--canvas) 65%, transparent)",
+              }}
+            >
+              "The people who know their God shall be strong and carry out great exploits."
+              <br />— Daniel 11:32
+            </div>
+          </div>
+
+          {/* Right side - Form */}
+          <div>
+            {/* Form header */}
+            <div className="text-center mb-10">
+              <div
+                className="text-xs tracking-[0.25em] uppercase font-semibold mb-3"
+                style={{ color: "color-mix(in oklab, var(--navy) 60%, transparent)" }}
+              >
+                • The Joseph Ministries · Yarah Life •
+              </div>
+              <h1
+                className="font-display text-3xl md:text-4xl font-bold mb-4"
+                style={{ color: "var(--navy)" }}
+              >
+                Contact Us
+              </h1>
+              <p
+                className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto italic"
+                style={{ color: "var(--charcoal)" }}
+              >
+                Have a question, a prayer request, or want to know more? We would love to hear from you. Every enquiry is read and responded to personally.
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div className="flex items-center justify-center gap-2 mb-10">
+              <span className="h-px w-16" style={{ background: "var(--navy)" }} />
+              <span
+                className="text-xl"
+                style={{ color: "var(--gold)" }}
+              >
+                ▼
+              </span>
+              <span className="h-px w-16" style={{ background: "var(--navy)" }} />
+            </div>
+
+            {/* Form */}
+            <div
+              className="rounded-2xl p-8 md:p-10"
+              style={{
+                background: "white",
+                border: "1px solid color-mix(in oklab, var(--navy) 15%, transparent)",
+                boxShadow: "0 4px 20px -8px rgba(0,0,0,0.1)",
+              }}
+            >
+              <h3
+                className="text-xl font-bold mb-2"
+                style={{ color: "var(--navy)" }}
+              >
+                Send Us a Message
+              </h3>
+              <p
+                className="text-sm mb-6"
+                style={{ color: "color-mix(in oklab, var(--charcoal) 80%, transparent)" }}
+              >
+                Prayer requests · Course enquiries · Partnership · General
+              </p>
+
+              {status === "success" ? (
+                <div
+                  className="p-6 rounded-xl text-center"
+                  style={{
+                    background: "color-mix(in oklab, var(--gold) 10%, transparent)",
+                    border: "1px solid var(--gold)",
+                    color: "var(--navy)",
+                  }}
+                >
+                  <div className="text-2xl mb-2">✓</div>
+                  <strong>Message sent successfully!</strong>
+                  <p className="text-sm mt-2">
+                    We'll respond within 2–3 business days.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Enquiry Type */}
+                  <div>
+                    <label
+                      className="block text-sm font-semibold mb-3"
+                      style={{ color: "var(--navy)" }}
+                    >
+                      Enquiry Type <span style={{ color: "var(--crimson)" }}>*</span>
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {(["General", "Course Enquiry", "Support & Giving", "Partnership"] as EnquiryType[]).map((type) => (
+                        <button
+                          key={type}
+                          type="button"
+                          onClick={() => setFormData((prev) => ({ ...prev, enquiryType: type }))}
+                          className="px-4 py-2 rounded-full text-sm font-medium transition-all"
+                          style={
+                            formData.enquiryType === type
+                              ? {
+                                  background: "var(--gold)",
+                                  color: "var(--charcoal)",
+                                }
+                              : {
+                                  background: "color-mix(in oklab, var(--navy) 8%, transparent)",
+                                  color: "var(--charcoal)",
+                                  border: "1px solid color-mix(in oklab, var(--navy) 15%, transparent)",
+                                }
+                          }
+                        >
+                          {type}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Name fields */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="firstName"
+                        className="block text-sm font-semibold mb-2"
+                        style={{ color: "var(--navy)" }}
+                      >
+                        First Name <span style={{ color: "var(--crimson)" }}>*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
+                        disabled={status === "submitting"}
+                        placeholder="First name"
+                        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                          background: "var(--canvas)",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="lastName"
+                        className="block text-sm font-semibold mb-2"
+                        style={{ color: "var(--navy)" }}
+                      >
+                        Last Name <span style={{ color: "var(--crimson)" }}>*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
+                        disabled={status === "submitting"}
+                        placeholder="Last name"
+                        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                          background: "var(--canvas)",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email & Phone */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-semibold mb-2"
+                        style={{ color: "var(--navy)" }}
+                      >
+                        Email <span style={{ color: "var(--crimson)" }}>*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        disabled={status === "submitting"}
+                        placeholder="you@email.com"
+                        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                          background: "var(--canvas)",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-semibold mb-2"
+                        style={{ color: "var(--navy)" }}
+                      >
+                        Phone (WhatsApp)
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        disabled={status === "submitting"}
+                        placeholder="+61 Number"
+                        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                          background: "var(--canvas)",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Address */}
+                  <div>
+                    <label
+                      htmlFor="street"
+                      className="block text-sm font-semibold mb-2"
+                      style={{ color: "var(--navy)" }}
+                    >
+                      Street Address
+                    </label>
+                    <input
+                      type="text"
+                      id="street"
+                      name="street"
+                      value={formData.street}
+                      onChange={handleChange}
+                      disabled={status === "submitting"}
+                      placeholder="Street address"
+                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                      style={{
+                        borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                        background: "var(--canvas)",
+                      }}
+                    />
+                  </div>
+
+                  {/* City & State */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="city"
+                        className="block text-sm font-semibold mb-2"
+                        style={{ color: "var(--navy)" }}
+                      >
+                        City / Suburb
+                      </label>
+                      <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                        disabled={status === "submitting"}
+                        placeholder="City"
+                        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                          background: "var(--canvas)",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="state"
+                        className="block text-sm font-semibold mb-2"
+                        style={{ color: "var(--navy)" }}
+                      >
+                        State / Province
+                      </label>
+                      <input
+                        type="text"
+                        id="state"
+                        name="state"
+                        value={formData.state}
+                        onChange={handleChange}
+                        disabled={status === "submitting"}
+                        placeholder="State"
+                        className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                          background: "var(--canvas)",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Country */}
+                  <div>
+                    <label
+                      htmlFor="country"
+                      className="block text-sm font-semibold mb-2"
+                      style={{ color: "var(--navy)" }}
+                    >
+                      Country <span style={{ color: "var(--crimson)" }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="country"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      required
+                      disabled={status === "submitting"}
+                      placeholder="Select your country"
+                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                      style={{
+                        borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                        background: "var(--canvas)",
+                      }}
+                    />
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-semibold mb-2"
+                      style={{ color: "var(--navy)" }}
+                    >
+                      Prayer Request / Enquiry <span style={{ color: "var(--crimson)" }}>*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      disabled={status === "submitting"}
+                      rows={6}
+                      placeholder="Share your prayer request, question, or message here. Every word is read and prayed over personally..."
+                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50 resize-none"
+                      style={{
+                        borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                        background: "var(--canvas)",
+                      }}
+                    />
+                  </div>
+
+                  {/* How did you hear */}
+                  <div>
+                    <label
+                      htmlFor="hearAbout"
+                      className="block text-sm font-semibold mb-2"
+                      style={{ color: "var(--navy)" }}
+                    >
+                      How did you hear about us?
+                    </label>
+                    <input
+                      type="text"
+                      id="hearAbout"
+                      name="hearAbout"
+                      value={formData.hearAbout}
+                      onChange={handleChange}
+                      disabled={status === "submitting"}
+                      placeholder="Select an option"
+                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
+                      style={{
+                        borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
+                        background: "var(--canvas)",
+                      }}
+                    />
+                  </div>
+
+                  {/* Error message */}
+                  {status === "error" && (
+                    <div
+                      className="p-4 rounded-lg text-center text-sm"
+                      style={{
+                        background: "color-mix(in oklab, var(--crimson) 10%, transparent)",
+                        color: "var(--crimson)",
+                      }}
+                    >
+                      {errorMessage || "Failed to send message. Please try again."}
+                    </div>
+                  )}
+
+                  {/* Submit button */}
+                  <button
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="w-full py-4 rounded-full font-bold text-sm tracking-[0.15em] uppercase transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] flex items-center justify-center gap-2"
+                    style={{
+                      background: "var(--navy)",
+                      color: "white",
+                      boxShadow: "0 8px 24px -8px rgba(15,23,55,0.55)",
+                    }}
+                  >
+                    {status === "submitting" ? "Sending..." : (
+                      <>
+                        <span>✦</span> Send My Message →
+                      </>
+                    )}
+                  </button>
+
+                  <p
+                    className="text-xs text-center"
+                    style={{ color: "color-mix(in oklab, var(--charcoal) 65%, transparent)" }}
+                  >
+                    Your details are kept private. We do not share your information with third parties.
+                  </p>
+                </form>
+              )}
+            </div>
+
+            {/* Bottom contact card */}
+            <div
+              className="mt-8 rounded-2xl p-6 text-center"
+              style={{
+                background: "var(--navy)",
+                color: "var(--canvas)",
+              }}
+            >
+              <div
+                className="text-xs tracking-[0.25em] uppercase font-semibold mb-2"
+                style={{ color: "var(--gold)" }}
+              >
+                Find Us
+              </div>
+              <div className="font-bold text-lg mb-2">The Joseph Ministries</div>
+              <div className="text-sm mb-4">
+                18 Agapanthus Avenue · Kellyville NSW · Sydney, Australia
+              </div>
+              <div className="flex justify-center items-center gap-4 text-sm">
+                <a
+                  href="tel:+61404767488"
+                  className="px-4 py-2 rounded-full border hover:bg-white/5 transition-colors"
+                  style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
+                >
+                  +61 404 767 488
+                </a>
+                <a
+                  href="mailto:info@yarahlife.com"
+                  className="px-4 py-2 rounded-full border hover:bg-white/5 transition-colors"
+                  style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
+                >
+                  info@yarahlife.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
