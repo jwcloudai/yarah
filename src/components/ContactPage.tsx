@@ -56,7 +56,6 @@ export function ContactPage() {
         state: "",
         country: "",
         message: "",
-        hearAbout: "",
       });
     } catch (error) {
       console.error("Form submission error:", error);
@@ -129,6 +128,24 @@ export function ContactPage() {
               </p>
 
               {status === "success" ? (
+                <div
+                  className="p-8 rounded-2xl text-center"
+                  style={{
+                    background: "color-mix(in oklab, var(--gold) 12%, transparent)",
+                    border: "2px solid var(--gold)",
+                  }}
+                >
+                  <div className="text-4xl mb-3" style={{ color: "var(--gold)" }}>✓</div>
+                  <div className="text-xl font-bold mb-2" style={{ color: "var(--navy)" }}>
+                    Message sent successfully!
+                  </div>
+                  <p className="text-base" style={{ color: "var(--charcoal)" }}>
+                    We'll respond within 2–3 business days.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Name fields */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label
@@ -560,7 +577,6 @@ export function ContactPage() {
               </div>
             </div>
           </div>
-      </div>
-    </section>
-  );
-}
+        </section>
+      );
+    }
