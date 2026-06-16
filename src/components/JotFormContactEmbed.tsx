@@ -1,43 +1,65 @@
-import { useEffect } from "react";
+import { useState, type FormEvent } from "react";
 
 export function JotFormContactEmbed() {
-  useEffect(() => {
-    // Load JotForm scripts
-    const scripts = [
-      "https://cdn.jotfor.ms/s/static/5e7c3f073d8/static/prototype.forms.js",
-      "https://cdn.jotfor.ms/s/static/5e7c3f073d8/static/jotform.forms.js",
-      "https://cdn.jotfor.ms/s/static/5e7c3f073d8/js/vendor/smoothscroll.min.js",
-      "https://cdn.jotfor.ms/s/static/5e7c3f073d8/js/errorNavigation.js"
-    ];
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-    const loadedScripts: HTMLScriptElement[] = [];
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
 
-    scripts.forEach((src) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.type = "text/javascript";
-      document.body.appendChild(script);
-      loadedScripts.push(script);
-    });
+    try {
+      const formData = new FormData(e.currentTarget);
 
-    // Set JotForm configuration
-    (window as any).enableEventObserver = true;
-    (window as any).enableDateFieldSelectInputs = false;
-
-    // Cleanup on unmount
-    return () => {
-      loadedScripts.forEach((script) => {
-        if (script.parentNode) {
-          script.parentNode.removeChild(script);
-        }
+      const response = await fetch("https://submit.jotform.com/submit/261582875886073", {
+        method: "POST",
+        body: formData,
       });
-    };
-  }, []);
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setStatus("success");
+      // Reset form
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to submit form. Please try again.");
+    }
+  };
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{
-        __html: `
+      {status === "success" ? (
+        <div
+          className="p-8 rounded-2xl text-center"
+          style={{
+            background: "color-mix(in oklab, var(--gold) 12%, transparent)",
+            border: "2px solid var(--gold)",
+          }}
+        >
+          <div className="text-4xl mb-3" style={{ color: "var(--gold)" }}>✓</div>
+          <div className="text-xl font-bold mb-2" style={{ color: "var(--navy)" }}>
+            Message sent successfully!
+          </div>
+          <p className="text-base mb-4" style={{ color: "var(--charcoal)" }}>
+            We'll respond within 2–3 business days.
+          </p>
+          <button
+            onClick={() => setStatus("idle")}
+            className="text-sm font-semibold hover:underline"
+            style={{ color: "var(--navy)" }}
+          >
+            ← Send another message
+          </button>
+        </div>
+      ) : (
+        <>
+          <style dangerouslySetInnerHTML={{
+            __html: `
           /* Override JotForm styles to match your design */
           .jotform-form {
             font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
@@ -116,6 +138,14 @@ export function JotFormContactEmbed() {
           .form-buttons-wrapper {
             margin-top: 32px !important;
           }
+          .error-message {
+            padding: 16px;
+            border-radius: 12px;
+            background: color-mix(in oklab, var(--crimson) 10%, transparent);
+            color: var(--crimson);
+            text-align: center;
+            margin-bottom: 16px;
+          }
         `
       }} />
       
@@ -127,6 +157,7 @@ export function JotFormContactEmbed() {
         id="261582875886073"
         acceptCharset="utf-8"
         autoComplete="on"
+        onSubmit={handleSubmit}
       >
         <input type="hidden" name="formID" value="261582875886073" />
         
@@ -329,6 +360,15 @@ export function JotFormContactEmbed() {
               </div>
             </li>
 
+            {/* Error message */}
+            {status === "error" && (
+              <li className="form-line">
+                <div className="error-message">
+                  {errorMessage}
+                </div>
+              </li>
+            )}
+
             {/* Submit Button */}
             <li className="form-line" data-type="control_button" id="id_2">
               <div id="cid_2" className="form-input-wide" data-layout="full">
@@ -338,8 +378,13 @@ export function JotFormContactEmbed() {
                     type="submit"
                     className="form-submit-button submit-button"
                     data-component="button"
+                    disabled={status === "submitting"}
                   >
-                    <span>✦</span> Send My Message →
+                    {status === "submitting" ? "Sending..." : (
+                      <>
+                        <span>✦</span> Send My Message →
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
@@ -349,6 +394,8 @@ export function JotFormContactEmbed() {
         
         <input type="hidden" name="simple_spc" value="261582875886073-261582875886073" />
       </form>
+        </>
+      )}
     </>
   );
 }
