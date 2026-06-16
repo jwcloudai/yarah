@@ -82,7 +82,7 @@ export function ContactPage() {
         <div className="grid lg:grid-cols-[400px,1fr] gap-10 lg:gap-16">
           {/* Left sidebar - Contact Details */}
           <div
-            className="rounded-3xl p-10 h-fit lg:sticky lg:top-32"
+            className="rounded-3xl p-10"
             style={{
               background: "var(--navy)",
               color: "var(--canvas)",
