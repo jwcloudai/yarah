@@ -309,8 +309,11 @@ export function SupportHero() {
           >
             Share
           </div>
-          <div className="flex justify-center items-center gap-3">
-            <button
+          <div className="flex justify-center items-center gap-3 flex-wrap">
+            <a
+              href="https://www.facebook.com/sharer/sharer.php?u=https://yarahlife.com/support"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-full border transition-colors hover:bg-white/5 flex items-center gap-2 text-sm"
               style={{
                 borderColor: "var(--gold)",
@@ -318,8 +321,11 @@ export function SupportHero() {
               }}
             >
               <Facebook className="h-4 w-4" /> Facebook
-            </button>
-            <button
+            </a>
+            <a
+              href="https://www.linkedin.com/sharing/share-offsite/?url=https://yarahlife.com/support"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-full border transition-colors hover:bg-white/5 flex items-center gap-2 text-sm"
               style={{
                 borderColor: "var(--gold)",
@@ -327,8 +333,11 @@ export function SupportHero() {
               }}
             >
               <Linkedin className="h-4 w-4" /> LinkedIn
-            </button>
-            <button
+            </a>
+            <a
+              href="https://twitter.com/intent/tweet?url=https://yarahlife.com/support&text=Support%20Yarah%20Life"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-full border transition-colors hover:bg-white/5 flex items-center gap-2 text-sm"
               style={{
                 borderColor: "var(--gold)",
@@ -336,8 +345,11 @@ export function SupportHero() {
               }}
             >
               <Twitter className="h-4 w-4" /> Twitter / X
-            </button>
-            <button
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-full border transition-colors hover:bg-white/5 flex items-center gap-2 text-sm"
               style={{
                 borderColor: "var(--gold)",
@@ -345,7 +357,7 @@ export function SupportHero() {
               }}
             >
               <Instagram className="h-4 w-4" /> Instagram
-            </button>
+            </a>
           </div>
         </div>
       </div>

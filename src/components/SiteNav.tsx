@@ -50,9 +50,33 @@ export function SiteNav() {
           Mon – Fri · 9:00 AM – 4:00 PM
         </span>
         <div className="flex items-center gap-4 opacity-90">
-          <a href="#" aria-label="Facebook"><Facebook className="h-4 w-4" /></a>
-          <a href="#" aria-label="LinkedIn"><Linkedin className="h-4 w-4" /></a>
-          <a href="#" aria-label="Instagram"><Instagram className="h-4 w-4" /></a>
+          <a 
+            href="https://facebook.com/yarahlife" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="hover:opacity-70 transition-opacity"
+          >
+            <Facebook className="h-4 w-4" />
+          </a>
+          <a 
+            href="https://linkedin.com/company/yarahlife" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="hover:opacity-70 transition-opacity"
+          >
+            <Linkedin className="h-4 w-4" />
+          </a>
+          <a 
+            href="https://instagram.com/yarahlife" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="hover:opacity-70 transition-opacity"
+          >
+            <Instagram className="h-4 w-4" />
+          </a>
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
-type EnquiryType = "General" | "Course Enquiry" | "Support & Giving" | "Partnership";
+type EnquiryType = "General";
 
 export function ContactPage() {
   const [formData, setFormData] = useState({
@@ -15,7 +15,6 @@ export function ContactPage() {
     state: "",
     country: "",
     message: "",
-    hearAbout: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -130,58 +129,6 @@ export function ContactPage() {
               </p>
 
               {status === "success" ? (
-                <div
-                  className="p-8 rounded-2xl text-center"
-                  style={{
-                    background: "color-mix(in oklab, var(--gold) 12%, transparent)",
-                    border: "2px solid var(--gold)",
-                  }}
-                >
-                  <div className="text-4xl mb-3" style={{ color: "var(--gold)" }}>✓</div>
-                  <div className="text-xl font-bold mb-2" style={{ color: "var(--navy)" }}>
-                    Message sent successfully!
-                  </div>
-                  <p className="text-base" style={{ color: "var(--charcoal)" }}>
-                    We'll respond within 2–3 business days.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  {/* Enquiry Type */}
-                  <div>
-                    <label
-                      className="block text-sm font-semibold mb-3"
-                      style={{ color: "var(--navy)" }}
-                    >
-                      Enquiry Type <span style={{ color: "var(--crimson)" }}>*</span>
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {(["General", "Course Enquiry", "Support & Giving", "Partnership"] as EnquiryType[]).map((type) => (
-                        <button
-                          key={type}
-                          type="button"
-                          onClick={() => setFormData((prev) => ({ ...prev, enquiryType: type }))}
-                          className="px-4 py-2 rounded-full text-sm font-medium transition-all"
-                          style={
-                            formData.enquiryType === type
-                              ? {
-                                  background: "var(--gold)",
-                                  color: "var(--charcoal)",
-                                }
-                              : {
-                                  background: "color-mix(in oklab, var(--navy) 8%, transparent)",
-                                  color: "var(--charcoal)",
-                                  border: "1px solid color-mix(in oklab, var(--navy) 15%, transparent)",
-                                }
-                          }
-                        >
-                          {type}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Name fields */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label
@@ -404,31 +351,6 @@ export function ContactPage() {
                       rows={6}
                       placeholder="Share your prayer request, question, or message here. Every word is read and prayed over personally..."
                       className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50 resize-none"
-                      style={{
-                        borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
-                        background: "var(--canvas)",
-                      }}
-                    />
-                  </div>
-
-                  {/* How did you hear */}
-                  <div>
-                    <label
-                      htmlFor="hearAbout"
-                      className="block text-sm font-semibold mb-2"
-                      style={{ color: "var(--navy)" }}
-                    >
-                      How did you hear about us?
-                    </label>
-                    <input
-                      type="text"
-                      id="hearAbout"
-                      name="hearAbout"
-                      value={formData.hearAbout}
-                      onChange={handleChange}
-                      disabled={status === "submitting"}
-                      placeholder="Select an option"
-                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 transition-all disabled:opacity-50"
                       style={{
                         borderColor: "color-mix(in oklab, var(--navy) 20%, transparent)",
                         background: "var(--canvas)",

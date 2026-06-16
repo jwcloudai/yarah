@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { BookMarked, Mail, Bell, Heart, Download, FileText } from "lucide-react";
+import pdfFile from "@/assets/YarahLife_NewEraOfSonsOfLight_v5.pdf";
 
 const benefits = [
   { icon: BookMarked, title: "Free Prophetic Document" },
@@ -55,7 +56,7 @@ export function FreeDownload() {
       
       // Trigger PDF download
       const link = document.createElement('a');
-      link.href = '/path-to-your-pdf.pdf'; // Update this with your actual PDF path
+      link.href = pdfFile;
       link.download = 'The-New-Era-of-Sons-of-Light.pdf';
       document.body.appendChild(link);
       link.click();
