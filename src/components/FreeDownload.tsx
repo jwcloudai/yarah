@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from "react";
 import { BookMarked, Mail, Bell, Heart, Download, FileText } from "lucide-react";
-import pdfFile from "@/assets/YarahLife_NewEraOfSonsOfLight_v5.pdf";
 
 const benefits = [
   { icon: BookMarked, title: "Free Prophetic Document" },
@@ -54,9 +53,9 @@ export function FreeDownload() {
 
       console.log("Subscribed successfully to MailerLite");
       
-      // Trigger PDF download
+      // Trigger PDF download from public folder
       const link = document.createElement('a');
-      link.href = pdfFile;
+      link.href = '/YarahLife_NewEraOfSonsOfLight_v5.pdf';
       link.download = 'The-New-Era-of-Sons-of-Light.pdf';
       document.body.appendChild(link);
       link.click();
