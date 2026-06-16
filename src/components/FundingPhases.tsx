@@ -308,7 +308,8 @@ export function FundingPhases() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <button
+          <a
+            href="/support"
             className="inline-flex items-center gap-2 px-8 h-14 rounded-full font-bold text-sm md:text-base tracking-[0.1em] uppercase transition-transform hover:scale-[1.03]"
             style={{
               background: "var(--gold)",
@@ -318,7 +319,7 @@ export function FundingPhases() {
           >
             Give Now — Help Us Hit $100K First
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </a>
         </div>
       </div>
     </section>
